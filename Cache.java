@@ -1,5 +1,7 @@
 package Projeto_Geocaching;
 
+import edu.princeton.cs.algs4.SeparateChainingHashST;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,7 @@ public class Cache {
   public int nItems;
 
   public String nome;
+
 
 
   public void inserir_item(Item i) {

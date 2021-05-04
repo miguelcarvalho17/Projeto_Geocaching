@@ -12,4 +12,8 @@ public class Premium extends Basic {
   public void criarCachePremium(Cache c) {
   }
 
+  public void encontrar_travelBug(){
+
+  }
+
 }

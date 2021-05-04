@@ -1,7 +1,8 @@
 package Projeto_Geocaching;
 
+import edu.princeton.cs.algs4.SeparateChainingHashST;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class Basic {
 
@@ -15,10 +16,12 @@ public class Basic {
 
   public ArrayList<Cache> cachesEscondidasB;
 
-      public List<Cache> cache;
-    public List<Travel_bugs> travel_bugs;
+  SeparateChainingHashST<String, Cache> caches = new SeparateChainingHashST<>();
+
+  public void criarUtilizador(){}
 
   public void criarCache(Cache c) {
+
   }
 
   public void removerCache(int id) {
@@ -28,6 +31,10 @@ public class Basic {
   }
 
   public void print_caches() {
+  }
+
+  public void trocar_item(){
+
   }
 
 }
