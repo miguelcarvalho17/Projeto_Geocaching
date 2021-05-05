@@ -18,7 +18,14 @@ public class Basic {
 
   SeparateChainingHashST<String, Cache> caches = new SeparateChainingHashST<>();
 
-  public void criarUtilizador(){}
+  public Basic(int ID, String nome) {
+    this.ID = ID;
+    this.nome = nome;
+  }
+
+  public void criarUtilizador(Basic b){
+
+  }
 
   public void criarCache(Cache c) {
 

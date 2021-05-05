@@ -2,6 +2,8 @@ package Projeto_Geocaching;
 
 public class Item {
 
-  public int ID;
+  private int ID;
+
+  private String objeto;
   
 }

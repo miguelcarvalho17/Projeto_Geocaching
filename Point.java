@@ -1,32 +1,44 @@
 package Projeto_Geocaching;
 
-import java.util.List;
-
 public class Point {
+
+  public String regiao;
 
   public double latitude;
 
   public double longitude;
 
-  public String regiao;
+   // public List<Cache> cache;
 
-    public List<Cache> cache;
-
-  public void setLocation(Point p) {
+  public Point(double latitude, double longitude, String regiao) {
+    this.latitude = latitude;
+    this.longitude = longitude;
+    this.regiao = regiao;
   }
 
-  public void translate(double latitude,double longitude) {
+  public String getRegiao() {
+    return regiao;
   }
 
-  public void move(double latitude, double longitude) {
+  public void setRegiao(String regiao) {
+    this.regiao = regiao;
   }
 
-  public Point getLocation() {
-  return null;
+  public double getLatitude() {
+    return latitude;
   }
 
-  public boolean equals(Point p) {
-  return false;
+  public void setLatitude(double latitude) {
+    this.latitude = latitude;
   }
+
+  public double getLongitude() {
+    return longitude;
+  }
+
+  public void setLongitude(double longitude) {
+    this.longitude = longitude;
+  }
+
 
 }
