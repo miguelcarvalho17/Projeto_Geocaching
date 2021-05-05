@@ -29,7 +29,15 @@ public class Cache {
     this.nome = nome;
   }
 
-  public Cache(String tipo, Point coordenadas, String dificuldade,int nitens, String nome) {
+  public RedBlackBST<Integer, Item> getItems() {
+    return items;
+  }
+
+  public void setItems(RedBlackBST<Integer, Item> items) {
+    this.items = items;
+  }
+
+  public Cache(String tipo, Point coordenadas, String dificuldade, int nitens, String nome) {
     this.tipo = tipo;
     this.coordenadas = coordenadas;
     this.dificuldade = dificuldade;
@@ -101,7 +109,7 @@ public class Cache {
 
   public void editar_item(int id, String objeto) {
     if (!this.items.contains(id)) {
-      System.out.println("Impossivel editar!");
+      System.out.println("Impossivel editar,item inexistente!");
       return;
     }
     Item i = this.items.get(id);
