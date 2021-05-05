@@ -62,6 +62,7 @@ public class Basic {
     }
     for (String si : this.caches.keys()) {
       System.out.println("Cache: " + this.caches.get(si));
+      this.caches.get(si).print_items();
     }
   }
 

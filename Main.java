@@ -15,9 +15,7 @@ public class Main {
 
         System.out.println(b1);
         b1.criarCache(c1);
-        c1.inserir_item(i1);
-
-        c1.print_items();
+        c2.inserir_item(i1);
         b1.criarCache(c2);
         b1.printCaches();
         System.out.println("-----------------------------");
