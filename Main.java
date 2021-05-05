@@ -14,9 +14,9 @@ public class Main {
         Item i1 = new Item(2,"Livro");
 
         System.out.println(b1);
-        b1.criarCache(c1);
+        b1.insertCache(c1);
         c2.inserir_item(i1);
-        b1.criarCache(c2);
+        b1.insertCache(c2);
         b1.printCaches();
         System.out.println("-----------------------------");
         b1.removerCache("geocache1");

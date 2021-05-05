@@ -71,7 +71,7 @@ public class Cache {
 
   public void inserir_item(Item i) {
     if (this.items.contains(i.getID())) {
-      System.out.println(" Esta item ja existe: " + i);
+      System.out.println(" Este item ja existe: " + i);
       return;
     }
     this.items.put(i.getID(), i);

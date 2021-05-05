@@ -27,7 +27,7 @@ public class Basic {
 
   }
 
-  public void criarCache(Cache c) {
+  public void insertCache(Cache c) {
 
       if (this.caches.contains(c.getNome())) {
         System.out.println(" Esta cache ja existe: " + c);
