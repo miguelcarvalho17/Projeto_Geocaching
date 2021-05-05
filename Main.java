@@ -16,8 +16,8 @@ public class Main {
         Item i2 = new Item(2, "Caneta");
 
         System.out.println(b1);
-       /* b1.insertCache(c1);
-        b1.insertCache(c2);
+        b1.insertCache(c1);
+       /* b1.insertCache(c2);
         c2.inserir_item(i1);
         b1.printCaches();
         System.out.println("-----------------------------");
@@ -28,7 +28,7 @@ public class Main {
 
         Basic b2 = new Basic(2, "Miguel");
         c1.inserir_item(i1);
-        b2.cachesEscondidasB.add(c1);
+        b2.cachesVisitadasB.add(c1);
         b2.items.add(i2);
         c1.print_items();
         b2.trocarItem(i1, c1.getNome(), i2);

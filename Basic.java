@@ -77,7 +77,7 @@ public class Basic {
 
     public Cache searchCache(String nome) {
 
-        for (Cache c : this.cachesEscondidasB) {
+        for (Cache c : this.cachesVisitadasB) {
             if (c.getNome().equals(nome)) {
                 return c;
             }
