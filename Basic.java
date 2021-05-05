@@ -33,14 +33,18 @@ public class Basic {
         System.out.println(" Esta cache ja existe: " + c);
         return;
       }
+      else if(!c.getTipo().equals("premium")){
+        System.out.println("Utilizador do tipo basic nao pode inserir caches premium");
+        return;
+      }
       this.caches.put(c.getNome(), c);
     }
 
 
   public Cache removerCache(String nome) {
     Cache c = this.caches.get(nome);
-    if (c != null) {
-      System.out.println("GroupClass removed: " + c.getNome());
+    if (c != null && !c.getTipo().equals("premium")) {
+      System.out.println("Cache removed: " + c.getNome());
       this.caches.delete(nome);
 
       return c;
