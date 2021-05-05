@@ -25,12 +25,43 @@ public class Premium extends Basic {
   public void criarCachePremium(Cache c) {
   }
 
-  public void criar_travelbug(Travel_bugs t){
+  public void criar_travelbug(Travel_bugs t, Cache c){
+    if (this.caches.contains(c.getNome())) {
+        if (c.travelBugs.contains(t.getID())){
+          System.out.println("O TravelBug ja se encontra na cache!");
+          return;
+        }
+        c.travelBugs.put(t.getID(), t);
+      System.out.println("TravelBug inserido com sucesso");
+      c.setnItems(c.getnItems()+1);
+      return;
+    }
+    System.out.println("Cache nao encontrada!");
+  }
 
+  public void insertCache(Cache c) {
+
+    if (this.caches.contains(c.getNome())) {
+      System.out.println(" Esta cache ja existe: " + c);
+      return;
+    }
+    this.caches.put(c.getNome(), c);
   }
 
   public void encontrar_travelBug(Travel_bugs t){
 
   }
 
+  @Override
+  public String toString() {
+    return "Premium{" +
+            "ID=" + ID +
+            ", nome='" + nome + '\'' +
+            ", cachesVisitadasB=" + cachesVisitadasB +
+            ", items=" + items +
+            ", cachesEscondidasB=" + cachesEscondidasB +
+            ", cachesEscondidasP=" + cachesEscondidasP +
+            ", cachesVisitadasP=" + cachesVisitadasP +
+            '}';
+  }
 }

@@ -1,5 +1,6 @@
 package Projeto_Geocaching;
 
+import edu.princeton.cs.algs4.RedBlackBST;
 import edu.princeton.cs.algs4.SeparateChainingHashST;
 
 import java.util.ArrayList;
@@ -41,18 +42,25 @@ public class Basic {
     }
 
 
-  public Cache removerCache(String nome) {
+  public void removerCache(String nome) {
     Cache c = this.caches.get(nome);
     if (c != null && !c.getTipo().equals("premium")) {
       System.out.println("Cache removed: " + c.getNome());
       this.caches.delete(nome);
-
-      return c;
+      return;
     }
-    return null;
+    System.out.println("Impossivel remover cache!");
   }
 
-  public void editarCache(int id) {
+  public void editarCache(String nome, String tipo, Point coordenadas, String dificuldade) {
+    Cache c = this.caches.get(nome);
+    if (c != null){
+      c.setCoordenadas(coordenadas);
+      c.setDificuldade(dificuldade);
+      c.setTipo(tipo);
+      return;
+    }
+    System.out.println("Impossivel editar uma cache que nao existe!");
   }
 
   public void printCaches() {

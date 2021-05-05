@@ -13,16 +13,26 @@ public class Main {
 
         Item i1 = new Item(2,"Livro");
 
-        System.out.println(b1);
-        b1.insertCache(c1);
-        b1.insertCache(c2);
-        c2.inserir_item(i1);
-        b1.printCaches();
-        System.out.println("-----------------------------");
-        b1.removerCache("geocache1");
+        //System.out.println(b1);
+        //b1.insertCache(c1);
+        //b1.editarCache("geocache1", "premium", p1,"dificil");
+        //b1.insertCache(c2);
+        //c2.inserir_item(i1);
+        //b1.printCaches();
+        //System.out.println("-----------------------------");
+        //b1.removerCache("geocache1");
         //c2.remover_item(2);
-        c2.editar_item(2, "Caderno");
-        b1.printCaches();
+        //c2.editar_item(2, "Caderno");
+        //b1.printCaches();
+
+
+        Premium p = new Premium(2, "Paulo");
+        Cache c3 = new Cache("premium", p1, "dificil","geocache3");
+        p.insertCache(c3);
+        Travel_bugs t = new Travel_bugs(3, "Coin");
+        p.criar_travelbug(t, c3);
+        System.out.println(p);
+        p.printCaches();
 
     }
 
