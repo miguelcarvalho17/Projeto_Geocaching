@@ -9,12 +9,19 @@ public class Main {
         Basic b1 = new Basic(1,"Daniel");
         Point p1 = new Point(5,2,"Norte");
         Cache c1 = new Cache("basic",p1,"facil", 5, "geocache1" );
-        Cache c2 = new Cache("premium",p1,"facil", 5, "geocache2" );
+        Cache c2 = new Cache("basic",p1,"facil", 5, "geocache2" );
+
+        Item i1 = new Item(2,"Livro");
+
+        System.out.println(b1);
         b1.criarCache(c1);
+        c1.inserir_item(i1);
+
+        c1.print_items();
         b1.criarCache(c2);
         b1.printCaches();
-        System.out.println("//////////////////////////////////");
-        b1.removerCache("geocache2");
+        System.out.println("-----------------------------");
+        b1.removerCache("geocache1");
         b1.printCaches();
 
     }

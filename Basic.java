@@ -43,7 +43,7 @@ public class Basic {
 
   public Cache removerCache(String nome) {
     Cache c = this.caches.get(nome);
-    if (c != null && c.getTipo().equals("premium")) {
+    if (c != null && !c.getTipo().equals("premium")) {
       System.out.println("Cache removed: " + c.getNome());
       this.caches.delete(nome);
 
@@ -69,4 +69,11 @@ public class Basic {
 
   }
 
+  @Override
+  public String toString() {
+    return "Basic{" +
+            "ID=" + ID +
+            ", nome='" + nome + '\'' +
+            '}';
+  }
 }

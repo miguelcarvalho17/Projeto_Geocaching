@@ -1,5 +1,6 @@
 package Projeto_Geocaching;
 
+import edu.princeton.cs.algs4.RedBlackBST;
 import edu.princeton.cs.algs4.SeparateChainingHashST;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class Cache {
 
   private int nItems;
 
+  RedBlackBST<Integer, Item> items = new RedBlackBST<>();
 
   public Cache(String tipo, Point coordenadas, String dificuldade, int nItems, String nome) {
     this.tipo = tipo;
@@ -68,6 +70,12 @@ public class Cache {
   }
 
   public void inserir_item(Item i) {
+    if (this.items.contains(i.getID())) {
+      System.out.println(" Esta item ja existe: " + i);
+      return;
+    }
+    this.items.put(i.getID(), i);
+    System.out.println("Item inserido com sucesso");
   }
 
   public void remover_item(int id) {
@@ -77,6 +85,13 @@ public class Cache {
   }
 
   public void print_items() {
+      if (this.items.isEmpty()) {
+        System.out.println("Esta cache nao tem items");
+        return;
+      }
+      for (Integer si : this.items.keys()) {
+        System.out.println("Cache: " + this.items.get(si));
+      }
   }
 
   @Override
