@@ -15,8 +15,8 @@ public class Main {
 
         System.out.println(b1);
         b1.insertCache(c1);
-        c2.inserir_item(i1);
         b1.insertCache(c2);
+        c2.inserir_item(i1);
         b1.printCaches();
         System.out.println("-----------------------------");
         b1.removerCache("geocache1");

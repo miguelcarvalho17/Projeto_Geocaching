@@ -90,19 +90,12 @@ public class Cache {
         return;
       }
       for (Integer si : this.items.keys()) {
-        System.out.println("Cache: " + this.items.get(si));
+        System.out.println("Items existentes na cache: " + this.items.get(si));
       }
   }
 
   @Override
   public String toString() {
-    return "Cache{" +
-            "nome='" + nome + '\'' +
-            ", tipo='" + tipo + '\'' +
-            ", coordenadas=" + coordenadas +
-            ", dificuldade='" + dificuldade + '\'' +
-            ", historico=" + historico +
-            ", nItems=" + nItems +
-            '}';
+    return  "nome='" + nome + '\'' + ", tipo='" + tipo + '\'' + ", coordenadas=" + coordenadas + ", dificuldade='" + dificuldade + '\'' + ", historico=" + historico + ", nItems=" + nItems + '}';
   }
 }

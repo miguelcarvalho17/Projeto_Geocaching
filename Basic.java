@@ -72,9 +72,6 @@ public class Basic {
 
   @Override
   public String toString() {
-    return "Basic{" +
-            "ID=" + ID +
-            ", nome='" + nome + '\'' +
-            '}';
+    return "User Basic->" + "ID=" + ID + "; nome=" + nome;
   }
 }
