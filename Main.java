@@ -1,11 +1,20 @@
 package Projeto_Geocaching;
-
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.SeparateChainingHashST;
+
+import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
+        Basic b1 = new Basic(1,"Daniel");
+        Point p1 = new Point(5,2,"Norte");
+        Cache c1 = new Cache("basic",p1,"facil", 5, "geocache1" );
+
+
 
     }
+
+
 
 
     public static void readUtilizadores(String path){

@@ -16,7 +16,7 @@ public class Basic {
 
   public ArrayList<Cache> cachesEscondidasB;
 
-  SeparateChainingHashST<String, Cache> caches = new SeparateChainingHashST<>();
+   SeparateChainingHashST<String, Cache> caches = new SeparateChainingHashST<>();
 
   public Basic(int ID, String nome) {
     this.ID = ID;
@@ -29,15 +29,36 @@ public class Basic {
 
   public void criarCache(Cache c) {
 
-  }
+      if (this.caches.contains(c.getNome())) {
+        System.out.println(" Esta cache ja existe: " + c);
+        return;
+      }
+      this.caches.put(c.getNome(), c);
+    }
 
-  public void removerCache(int id) {
+
+  public Cache removerCache(String nome) {
+    Cache c = this.caches.get(nome);
+    if (c != null) {
+      System.out.println("GroupClass removed: " + c.getNome());
+      this.caches.delete(nome);
+
+      return c;
+    }
+    return null;
   }
 
   public void editarCache(int id) {
   }
 
-  public void print_caches() {
+  public void printCaches() {
+    if (this.caches.isEmpty()) {
+      System.out.println("Nao existem caches");
+      return;
+    }
+    for (String si : this.caches.keys()) {
+      System.out.println("Cache: " + this.caches.get(si));
+    }
   }
 
   public void trocar_item(){
