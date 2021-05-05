@@ -33,7 +33,7 @@ public class Basic {
         System.out.println(" Esta cache ja existe: " + c);
         return;
       }
-      else if(!c.getTipo().equals("premium")){
+      else if(c.getTipo().equals("premium")){
         System.out.println("Utilizador do tipo basic nao pode inserir caches premium");
         return;
       }
@@ -43,7 +43,7 @@ public class Basic {
 
   public Cache removerCache(String nome) {
     Cache c = this.caches.get(nome);
-    if (c != null && !c.getTipo().equals("premium")) {
+    if (c != null && c.getTipo().equals("premium")) {
       System.out.println("Cache removed: " + c.getNome());
       this.caches.delete(nome);
 

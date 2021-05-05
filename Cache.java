@@ -79,4 +79,15 @@ public class Cache {
   public void print_items() {
   }
 
+  @Override
+  public String toString() {
+    return "Cache{" +
+            "nome='" + nome + '\'' +
+            ", tipo='" + tipo + '\'' +
+            ", coordenadas=" + coordenadas +
+            ", dificuldade='" + dificuldade + '\'' +
+            ", historico=" + historico +
+            ", nItems=" + nItems +
+            '}';
+  }
 }

@@ -40,5 +40,12 @@ public class Point {
     this.longitude = longitude;
   }
 
-
+  @Override
+  public String toString() {
+    return "Point{" +
+            "regiao='" + regiao + '\'' +
+            ", latitude=" + latitude +
+            ", longitude=" + longitude +
+            '}';
+  }
 }
