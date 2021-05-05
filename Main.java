@@ -20,7 +20,8 @@ public class Main {
         b1.printCaches();
         System.out.println("-----------------------------");
         b1.removerCache("geocache1");
-        c2.remover_item(2);
+        //c2.remover_item(2);
+        c2.editar_item(2, "Caderno");
         b1.printCaches();
 
     }

@@ -98,7 +98,14 @@ public class Cache {
     return null;
   }
 
-  public void editar_item(int id) {
+  public void editar_item(int id, String objeto) {
+    if (!this.items.contains(id)) {
+      System.out.println("Impossivel editar!");
+      return;
+    }
+    Item i = this.items.get(id);
+    i.setObjeto(objeto);
+    System.out.println("Item editado com sucesso");
   }
 
   public void print_items() {
