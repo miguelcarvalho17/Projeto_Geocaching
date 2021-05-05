@@ -1,7 +1,6 @@
 package Projeto_Geocaching;
 
 import edu.princeton.cs.algs4.RedBlackBST;
-import edu.princeton.cs.algs4.SeparateChainingHashST;
 
 import java.util.ArrayList;
 
@@ -87,7 +86,16 @@ public class Cache {
     this.nItems++;
   }
 
-  public void remover_item(int id) {
+  public Item remover_item(int id) {
+
+    if (this.items.contains(id)) {
+      Item i = this.items.get(id);
+      System.out.println("Item Removed: " + i);
+      this.items.delete(id);
+      this.nItems--;
+      return i;
+    }
+    return null;
   }
 
   public void editar_item(int id) {
