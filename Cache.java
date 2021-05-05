@@ -21,11 +21,19 @@ public class Cache {
 
   RedBlackBST<Integer, Item> items = new RedBlackBST<>();
 
-  public Cache(String tipo, Point coordenadas, String dificuldade, int nItems, String nome) {
+  public Cache(String tipo, Point coordenadas, String dificuldade, String nome) {
     this.tipo = tipo;
     this.coordenadas = coordenadas;
     this.dificuldade = dificuldade;
-    this.nItems = nItems;
+    this.nItems = 0;
+    this.nome = nome;
+  }
+
+  public Cache(String tipo, Point coordenadas, String dificuldade,int nitens, String nome) {
+    this.tipo = tipo;
+    this.coordenadas = coordenadas;
+    this.dificuldade = dificuldade;
+    this.nItems = nitens;
     this.nome = nome;
   }
 
@@ -76,6 +84,7 @@ public class Cache {
     }
     this.items.put(i.getID(), i);
     System.out.println("Item inserido com sucesso");
+    this.nItems++;
   }
 
   public void remover_item(int id) {

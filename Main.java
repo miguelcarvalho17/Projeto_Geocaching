@@ -8,8 +8,8 @@ public class Main {
     public static void main(String[] args) {
         Basic b1 = new Basic(1,"Daniel");
         Point p1 = new Point(5,2,"Norte");
-        Cache c1 = new Cache("basic",p1,"facil", 5, "geocache1" );
-        Cache c2 = new Cache("basic",p1,"facil", 5, "geocache2" );
+        Cache c1 = new Cache("basic",p1,"facil",  "geocache1" );
+        Cache c2 = new Cache("basic",p1,"facil",  "geocache2" );
 
         Item i1 = new Item(2,"Livro");
 
