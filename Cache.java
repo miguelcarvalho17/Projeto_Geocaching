@@ -91,7 +91,7 @@ public class Cache {
       return;
     }
     this.items.put(i.getID(), i);
-    System.out.println("Item inserido na " + this.getNome());
+    //System.out.println("Item inserido na " + this.getNome());
     this.nItems++;
   }
 
