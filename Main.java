@@ -16,22 +16,17 @@ public class Main {
         Item i2 = new Item(2, "Caneta");
 
         System.out.println(b1);
-        b1.insertCache(c1);
-       /* b1.insertCache(c2);
-        c2.inserir_item(i1);
-        b1.printCaches();
-        System.out.println("-----------------------------");
-        b1.removerCache("geocache1");
-        //c2.remover_item(2);
-        c2.editar_item(2, "Caderno");
-        b1.printCaches();*/
+        b1.insertCache(c1); // Utilizador b1 insere uma caixa
+        b1.cachesEscondidasB.add(c1); // caixa adicionada as caches escondidas
+        c1.inserir_item(i1); // item inserido na cache
+
 
         Basic b2 = new Basic(2, "Miguel");
-        c1.inserir_item(i1);
-        b2.cachesVisitadasB.add(c1);
-        b2.items.add(i2);
+        b2.cachesVisitadasB.add(c1); // Utilizador b2 visita cache c1
+        // devemos remove-la das escondidas agora?
+        b2.items.add(i2); // User b2 tem um item no seu arraylist de items
         c1.print_items();
-        b2.trocarItem(i1, c1.getNome(), i2);
+        b2.trocarItem(i1, c1.getNome(), i2); // Troca esse item (i2) pelo i1
         System.out.println("/////////////////");
         c1.print_items();
     }

@@ -91,7 +91,7 @@ public class Cache {
       return;
     }
     this.items.put(i.getID(), i);
-    System.out.println("Item inserido com sucesso");
+    System.out.println("Item inserido na " + this.getNome());
     this.nItems++;
   }
 
@@ -99,7 +99,7 @@ public class Cache {
 
     if (this.items.contains(id)) {
       Item i = this.items.get(id);
-      System.out.println("Item Removed: " + i);
+      System.out.println("Item removido da " + this.getNome() + ": " +i);
       this.items.delete(id);
       this.nItems--;
       return i;
@@ -114,7 +114,7 @@ public class Cache {
     }
     Item i = this.items.get(id);
     i.setObjeto(objeto);
-    System.out.println("Item editado com sucesso");
+    System.out.println("Item editado com sucesso"  + this.getNome());
   }
 
   public void print_items() {
@@ -122,7 +122,7 @@ public class Cache {
         System.out.println("Esta cache nao tem items");
       }
       for (Integer si : this.items.keys()) {
-        System.out.println("Items existentes na cache: " + this.items.get(si));
+        System.out.println("Items existentes na " + this.getNome() +":"+ this.items.get(si));
       }
       if (!this.travelBugs.isEmpty()){
       for (Integer se: this.travelBugs.keys()){

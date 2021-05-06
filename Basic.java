@@ -90,12 +90,12 @@ public class Basic {
 
         if (c.getItems().get(i.getID()) == null) {
 
-            System.out.println("Item not found");
+            System.out.println("Item nao encontrado");
             return;
         }
         c.remover_item(i.getID()); // i = sai da cache
         c.inserir_item(i2);   // i2 entra
-        this.items.add(i);
+        this.items.add(i); // guarda o item que o user removeu no seu arraylist de items
     }
 
     @Override
