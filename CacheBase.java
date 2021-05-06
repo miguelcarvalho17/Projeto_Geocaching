@@ -3,6 +3,7 @@ package Projeto_Geocaching;
 import java.util.ArrayList;
 
     public class CacheBase {
+
     private ArrayList<Cache> DB_caches = new ArrayList<>();
 
 

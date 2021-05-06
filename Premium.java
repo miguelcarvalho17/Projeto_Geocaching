@@ -11,7 +11,6 @@ public class Premium extends Basic {
     public ArrayList<Cache> cachesVisitadasP;
 
 
-
     public Premium(int ID, String nome) {
         super(ID, nome);
     }
@@ -52,7 +51,19 @@ public class Premium extends Basic {
             System.out.println(" Esta cache ja existe: " + c);
             return;
         }
+
         this.caches.put(c.getNome(), c);
+    }
+
+    public void findCachesPremiumWithObjects(CacheBase cbasePremium) {
+
+        for (Cache c : cbasePremium.getCaches()) {
+            if (c.getTipo().equals("premium")) {
+                if(c.getnItems()>0){
+                    System.out.println(c.toString());
+                }
+            }
+        }
     }
 
     public void encontrar_travelBug(Travel_bugs t) {

@@ -20,9 +20,31 @@ public class Main {
         cbase.getCaches().add(c1);
         Cache c2 = new Cache("basic",p2,"facil",  "geocache2");
         cbase.getCaches().add(c2);
-        Item i1 = new Item(2,"Livro");
 
-        c2.inserir_item(i1);
+
+        Item i1 = new Item(2,"Livro");
+        Item i2 = new Item(2,"AK47");
+
+
+
+        Premium pr1 = new Premium(3,"Joao");
+        Cache c3 = new Cache ("premium",p1,"dificil",0,"geocache3");
+        cbase.getCaches().add(c3);
+
+        pr1.insertCache(c3);
+        c3.inserir_item(i2);
+
+        Premium pr2 = new Premium(3,"Joao");
+        Cache c4 = new Cache ("premium",p1,"dificil",0,"geocache4");
+        c4.inserir_item(i2);
+        cbase.getCaches().add(c4);
+        pr2.insertCache(c4);
+
+        pr1.findCachesPremiumWithObjects(cbase);
+
+
+
+       // c2.inserir_item(i1);
 
         //System.out.println(base.toString());
         //System.out.println(cbase.toString());
@@ -30,7 +52,7 @@ public class Main {
         //b1.visitCache(c1);
         //b2.visitCache(c1);
 
-        c1.findUsersVisitedCache(base);
+      //  c1.findUsersVisitedCache(base);
         //b2.visitCache(c2);
 
         //b2.FindNonVisitedCaches(cbase);
