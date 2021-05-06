@@ -17,12 +17,12 @@ public class Main {
 
         System.out.println(b1);
         b1.insertCache(c1); // Utilizador b1 insere uma caixa
-        b1.cachesEscondidasB.add(c1); // caixa adicionada as caches escondidas
+        b1.visitCache(c1); // caixa adicionada as caches escondidas
         c1.inserir_item(i1); // item inserido na cache
 
 
         Basic b2 = new Basic(2, "Miguel");
-        b2.cachesVisitadasB.add(c1); // Utilizador b2 visita cache c1
+        b2.visitCache(c1); // Utilizador b2 visita cache c1
         // devemos remove-la das escondidas agora?
         b2.items.add(i2); // User b2 tem um item no seu arraylist de items
         c1.print_items();

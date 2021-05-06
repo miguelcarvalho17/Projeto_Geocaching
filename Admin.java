@@ -15,6 +15,7 @@ public class Admin extends Premium {
   }
 
   public void remover_utilizador(int id) {
+
   }
 
   public void print_utilizador() {

@@ -29,6 +29,11 @@ public class Basic {
 
     }
 
+    public void visitCache(Cache c){
+        this.cachesVisitadasB.add(c);
+    }
+
+
     public void insertCache(Cache c) {
 
         if (this.caches.contains(c.getNome())) {
