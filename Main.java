@@ -26,7 +26,7 @@ public class Main {
         b1.insertCache(c1,cbase);
       //  b1.printCaches();
 
-        System.out.println(base.toString());
+        System.out.println(cbase.toString());
 
 
     /*    Premium pr1 = new Premium(3,"Joao");
