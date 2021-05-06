@@ -17,12 +17,12 @@ public class Basic {
 
     public ArrayList<Cache> cachesEscondidasB = new ArrayList<>();
 
-
     SeparateChainingHashST<String, Cache> caches = new SeparateChainingHashST<>();
 
     public Basic(int ID, String nome) {
         this.ID = ID;
         this.nome = nome;
+
     }
 
     public void criarUtilizador(Basic b) {
@@ -89,6 +89,22 @@ public class Basic {
         }
         return null;
     }
+
+    public void find_visitedCaches(){
+      System.out.println(this.nome+" visitou:");
+      for (Cache c : this.cachesVisitadasB){
+        System.out.println(c.toString());
+      }
+    }
+
+  public void find_visitedCaches_regiao(String regiao){
+    System.out.println(this.nome+" visitou:");
+    for (Cache c : this.cachesVisitadasB){
+      if (c.getCoordenadas().regiao.equals(regiao)){
+        System.out.println(c.toString());
+      }
+    }
+  }
 
     public void trocarItem(Item i, String nome, Item i2) {
         Cache c = this.searchCache(nome);
