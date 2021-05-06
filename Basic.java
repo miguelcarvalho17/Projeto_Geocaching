@@ -29,7 +29,7 @@ public class Basic {
     }
 
 
-    public void insertCache(Cache c) {
+    public void insertCache(Cache c,CacheBase cbase) {
 
         if (this.caches.contains(c.getNome())) {
             System.out.println(" Esta cache ja existe: " + c);
@@ -39,7 +39,7 @@ public class Basic {
             return;
         }
         this.caches.put(c.getNome(), c);
-        //this.cachesEscondidasB.add(c);
+        cbase.getCaches().add(c);
     }
 
 
