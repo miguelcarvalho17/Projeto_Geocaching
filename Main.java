@@ -26,11 +26,14 @@ public class Main {
         //System.out.println(base.toString());
         //System.out.println(cbase.toString());
 
-        b2.visitCache(c1);
+        //b1.visitCache(c1);
+        //b2.visitCache(c1);
+
+        c1.findUsersVisitedCache(base);
         //b2.visitCache(c2);
 
         //b2.FindNonVisitedCaches(cbase);
-        b2.FindNonVisitedCaches_Regiao(cbase, "Sul");
+        //b2.FindNonVisitedCaches_Regiao(cbase, "Sul");
 
         //b2.find_visitedCaches();
         //b2.find_visitedCaches_regiao("Norte");

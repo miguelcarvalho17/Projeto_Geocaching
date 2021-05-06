@@ -20,6 +20,7 @@ public class Premium extends Basic {
 
 
   public void criarCachePremium(Cache c) {
+
   }
 
   public void criar_travelbug(Travel_bugs t, Cache c){

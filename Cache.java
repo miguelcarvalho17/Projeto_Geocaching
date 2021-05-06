@@ -131,6 +131,31 @@ public class Cache {
       }
   }
 
+  public void findUsersVisitedCache(UsersBase base){
+    int i = 0;
+    for (Basic b : base.getBasics()){
+      if (b.cachesVisitadasB.contains(this)){
+        System.out.println(b.toString());
+        i++;
+      }
+    }
+    for (Premium p : base.getPremiums()){
+      if (p.cachesVisitadasB.contains(this)){
+        System.out.println(p.toString());
+        i++;
+      }
+    }
+    for (Admin a : base.getAdmins()){
+      if (a.cachesVisitadasB.contains(this)){
+        System.out.println(a.toString());
+        i++;
+      }
+    }
+    if (i == 0){
+      System.out.println("Nenhum user passou nesta cache");
+    }
+  }
+
   @Override
   public String toString() {
     return  "nome='" + nome + '\'' + ", tipo='" + tipo + '\'' + ", coordenadas=" + coordenadas + ", dificuldade='" + dificuldade + '\'' + ", historico=" + historico + ", nItems=" + nItems + '}';
