@@ -9,7 +9,8 @@ public class Main {
     public static void main(String[] args) {
         UsersBase base = new UsersBase();
         CacheBase cbase = new CacheBase();
-        Basic b1 = new Basic(1,"Daniel");
+        readUtilizadores("data/utilizadores.txt",base);
+        /*Basic b1 = new Basic(1,"Daniel");
         base.getBasics().add(b1);
         Basic b2 = new Basic(2,"Miguel");
         base.getBasics().add(b2);
@@ -58,13 +59,15 @@ public class Main {
         //p.criar_travelbug(t, c3);
         //System.out.println(p);
         //p.printCaches();
+        */
 
+        System.out.println(base.toString());
     }
 
 
 
 
-    public static void readUtilizadores(String path){
+    public static void readUtilizadores(String path, UsersBase base){
         In in = new In(path);
         while (!in.isEmpty()) {
             String line = in.readLine();
@@ -74,15 +77,18 @@ public class Main {
             String tipo = fields[2];
             if (tipo.equals("basic")){
                 Basic b = new Basic(Integer.parseInt(id), nome);
+                base.getBasics().add(b);
             }else if(tipo.equals("premium")){
                 Premium p = new Premium(Integer.parseInt(id), nome);
+                base.getPremiums().add(p);
             }else{
                 Admin a = new Admin(Integer.parseInt(id), nome);
+                base.getAdmins().add(a);
             }
         }
         }
 
-     public static void readCaches(String path){
+     public static void readCaches(String path, CacheBase cbase){
          In in = new In(path);
          while (!in.isEmpty()) {
              String line = in.readLine();
@@ -97,7 +103,7 @@ public class Main {
 
              Point p = new Point(Double.parseDouble(latitude), Double.parseDouble(longitude), regiao);
              Cache c = new Cache(tipo, p, dificuldade, Integer.parseInt(nitems), nome);
-
+             cbase.getCaches().add(c);
          }
      }
     }
