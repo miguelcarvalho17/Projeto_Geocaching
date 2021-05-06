@@ -8,23 +8,29 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         UsersBase base = new UsersBase();
+        CacheBase cbase = new CacheBase();
         Basic b1 = new Basic(1,"Daniel");
         base.getBasics().add(b1);
         Basic b2 = new Basic(2,"Miguel");
         base.getBasics().add(b2);
         Point p1 = new Point(5,2,"Norte");
         Point p2 = new Point(5,2,"Sul");
-        Cache c1 = new Cache("basic",p1,"facil",  "geocache1" );
-        Cache c2 = new Cache("basic",p2,"facil",  "geocache2" );
-
+        Cache c1 = new Cache("basic",p1,"facil",  "geocache1");
+        cbase.getCaches().add(c1);
+        Cache c2 = new Cache("basic",p2,"facil",  "geocache2");
+        cbase.getCaches().add(c2);
         Item i1 = new Item(2,"Livro");
 
         c2.inserir_item(i1);
 
-        System.out.println(base.toString());
+        //System.out.println(base.toString());
+        //System.out.println(cbase.toString());
 
-        //b2.visitCache(c1);
+        b2.visitCache(c1);
         //b2.visitCache(c2);
+
+        //b2.FindNonVisitedCaches(cbase);
+        b2.FindNonVisitedCaches_Regiao(cbase, "Sul");
 
         //b2.find_visitedCaches();
         //b2.find_visitedCaches_regiao("Norte");

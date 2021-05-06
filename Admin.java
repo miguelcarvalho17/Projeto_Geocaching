@@ -7,10 +7,6 @@ public class Admin extends Premium {
   }
 
 
-  public void criarUtilizador(Admin a) {
-    super.criarUtilizador(a);
-  }
-
   public void editar_utilizador(int id) {
   }
 

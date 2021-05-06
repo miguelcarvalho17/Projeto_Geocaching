@@ -18,9 +18,6 @@ public class Premium extends Basic {
     this.cachesVisitadasP = cachesVisitadasP;
   }
 
-  public void criarUtilizador(Premium p) {
-    super.criarUtilizador(p);
-  }
 
   public void criarCachePremium(Cache c) {
   }

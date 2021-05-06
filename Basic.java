@@ -22,11 +22,6 @@ public class Basic {
     public Basic(int ID, String nome) {
         this.ID = ID;
         this.nome = nome;
-
-    }
-
-    public void criarUtilizador(Basic b) {
-
     }
 
     public void visitCache(Cache c){
@@ -105,6 +100,26 @@ public class Basic {
       }
     }
   }
+
+    public void FindNonVisitedCaches(CacheBase cbase){
+        System.out.println(this.nome+" nao visitou:");
+        for (Cache c : cbase.getCaches()){
+            if (!this.cachesVisitadasB.contains(c)) {
+                System.out.println(c.toString());
+            }
+        }
+    }
+
+    public void FindNonVisitedCaches_Regiao(CacheBase cbase, String regiao) {
+        System.out.println(this.nome + " nao visitou:");
+        for (Cache c : cbase.getCaches()) {
+            if (!this.cachesVisitadasB.contains(c)) {
+                if (c.getCoordenadas().regiao.equals(regiao)) {
+                    System.out.println(c.toString());
+                }
+            }
+        }
+    }
 
     public void trocarItem(Item i, String nome, Item i2) {
         Cache c = this.searchCache(nome);
