@@ -9,8 +9,8 @@ public class Main {
     public static void main(String[] args) {
         UsersBase base = new UsersBase();
         CacheBase cbase = new CacheBase();
-        readUtilizadores("data/utilizadores.txt",base);
-        //Basic b1 = new Basic(8,"Daniel", base);
+        //readUtilizadores("data/utilizadores.txt",base);
+        Basic b1 = new Basic(8,"Daniel", base);
         //Basic b2 = new Basic(10,"Miguel", base);
         //Point p1 = new Point(5,2,"Norte");
         //Point p2 = new Point(5,2,"Sul");
@@ -96,7 +96,8 @@ public class Main {
         //System.out.println(p);
         //p.printCaches();
         */
-
+        Admin a1 = new Admin(2, "Miguel");
+        b1 = (Admin) a1.editar_utilizador(b1,1,base,"admin","Rodrigo");
        base.printUsers();
     }
 

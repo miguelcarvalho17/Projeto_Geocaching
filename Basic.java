@@ -49,11 +49,12 @@ public class Basic {
     }
 
 
-    public void removerCache(String nome) {
+    public void removerCache(String nome, CacheBase cbase) {
         Cache c = this.caches.get(nome);
         if (c != null && !c.getTipo().equals("premium")) {
             System.out.println("Cache removed: " + c.getNome());
             this.caches.delete(nome);
+            cbase.DB_caches.delete(nome);
             return;
         }
         System.out.println("Impossivel remover cache!");
@@ -107,38 +108,38 @@ public class Basic {
     }
   }
 
-   /* public void FindNonVisitedCaches(CacheBase cbase){
+    public void FindNonVisitedCaches(CacheBase cbase){
         System.out.println(this.nome+" nao visitou:");
-        for (Cache c : cbase.getCaches()){
-            if (!this.cachesVisitadasB.contains(c)) {
-                System.out.println(c.toString());
+        for (String si : cbase.getDB_caches().keys()){
+            if (!this.cachesVisitadasB.contains(cbase.getDB_caches().get(si))) {
+                System.out.println(cbase.getDB_caches().get(si).toString());
             }
         }
-    }*/
+    }
 
-   /* public void FindNonVisitedCaches_Regiao(CacheBase cbase, String regiao) {
+    public void FindNonVisitedCaches_Regiao(CacheBase cbase, String regiao) {
         System.out.println(this.nome + " nao visitou:");
-        for (Cache c : cbase.getCaches()) {
-            if (!this.cachesVisitadasB.contains(c)) {
-                if (c.getCoordenadas().regiao.equals(regiao)) {
-                    System.out.println(c.toString());
+        for (String si : cbase.getDB_caches().keys()) {
+            if (!this.cachesVisitadasB.contains(cbase.getDB_caches().get(si))) {
+                if (cbase.getDB_caches().get(si).getCoordenadas().regiao.equals(regiao)) {
+                    System.out.println(cbase.getDB_caches().get(si).toString());
                 }
             }
         }
-    }*/
+    }
 
-   /* public void trocarItem(Item i, String nome, Item i2) {
-        Cache c = this.searchCache(nome);
+    public void trocarItem(Item i, String nome, Item i2, CacheBase cbase) {
+        Cache c = this.searchCache(nome); // procurar nas caches globais, nao nas do utilizador
 
         if (c.getItems().get(i.getID()) == null) {
 
             System.out.println("Item nao encontrado");
             return;
         }
-        c.remover_item(i.getID()); // i = sai da cache
-        c.inserir_item(i2);   // i2 entra
+        c.remover_item(i.getID(), cbase); // i = sai da cache
+        c.inserir_item(i2, cbase);   // i2 entra
         this.items.add(i); // guarda o item que o user removeu no seu arraylist de items
-    }*/
+    }
 
     @Override
     public String toString() {

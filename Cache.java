@@ -108,12 +108,13 @@ public class Cache {
     this.nItems++;
   }
 
-  public Item remover_item(int id) {
+  public Item remover_item(int id, CacheBase cbase) {
 
     if (this.items.contains(id)) {
       Item i = this.items.get(id);
       System.out.println("Item removido da " + this.getNome() + ": " +i);
       this.items.delete(id);
+      cbase.DB_caches.get(this.getNome()).remover_item(id, cbase);
       this.nItems--;
       return i;
     }

@@ -13,7 +13,6 @@ import java.util.ArrayList;
     }
 
         public void printDBcaches(){
-
           for (String c : this.getDB_caches().keys()){
               System.out.println(this.getDB_caches().get(c)+ "\n");
           }
