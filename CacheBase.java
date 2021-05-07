@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
     public class CacheBase {
 
-   // private ArrayList<Cache> DB_caches = new ArrayList<>();
    SeparateChainingHashST<String, Cache> DB_caches = new SeparateChainingHashST<>();
 
 

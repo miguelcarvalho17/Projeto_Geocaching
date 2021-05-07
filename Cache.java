@@ -146,21 +146,21 @@ public class Cache {
 
   public void findUsersVisitedCache(UsersBase base){
     int i = 0;
-    for (Basic b : base.getBasics()){
-      if (b.cachesVisitadasB.contains(this)){
-        System.out.println(b.toString());
+    for (Integer si : base.getBasics().keys()){
+      if (base.getBasics().get(si).cachesVisitadasB.contains(this)){
+        System.out.println(base.getBasics().get(si).toString());
         i++;
       }
     }
-    for (Premium p : base.getPremiums()){
-      if (p.cachesVisitadasB.contains(this)){
-        System.out.println(p.toString());
+    for (Integer se : base.getPremiums().keys()){
+      if (base.getPremiums().get(se).cachesVisitadasB.contains(this)){
+        System.out.println(base.getPremiums().get(se).toString());
         i++;
       }
     }
-    for (Admin a : base.getAdmins()){
-      if (a.cachesVisitadasB.contains(this)){
-        System.out.println(a.toString());
+    for (Integer so : base.getAdmins().keys()){
+      if (base.getAdmins().get(so).cachesVisitadasB.contains(this)){
+        System.out.println(base.getAdmins().get(so).toString());
         i++;
       }
     }

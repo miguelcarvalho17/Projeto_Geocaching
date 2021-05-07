@@ -13,7 +13,7 @@ public class Premium extends Basic {
 
     public Premium(int ID, String nome, UsersBase base) {
         super(ID, nome);
-        base.getPremiums().add(this);
+        base.getPremiums().put(super.ID,this);
     }
 
     public Premium(int ID, String nome) {

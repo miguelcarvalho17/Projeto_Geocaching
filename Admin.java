@@ -4,7 +4,7 @@ public class Admin extends Premium {
 
   public Admin(int ID, String nome, UsersBase base) {
     super(ID, nome);
-    base.getAdmins().add(this);
+    base.getAdmins().put(super.ID,this);
   }
 
   public Admin(int ID, String nome) {
@@ -19,8 +19,6 @@ public class Admin extends Premium {
 
   }
 
-  public void print_utilizador() {
-  }
 
   @Override
   public String toString() {

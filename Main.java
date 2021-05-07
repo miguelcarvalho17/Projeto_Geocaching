@@ -9,26 +9,23 @@ public class Main {
     public static void main(String[] args) {
         UsersBase base = new UsersBase();
         CacheBase cbase = new CacheBase();
-        //readUtilizadores("data/utilizadores.txt",base);
-      /*  Basic b1 = new Basic(1,"Daniel", base);
-        //base.getBasics().add(b1);
-        Basic b2 = new Basic(2,"Miguel", base);
-        //base.getBasics().add(b2);*/
-        Point p1 = new Point(5,2,"Norte");
-        Point p2 = new Point(5,2,"Sul");
+        readUtilizadores("data/utilizadores.txt",base);
+        //Basic b1 = new Basic(8,"Daniel", base);
+        //Basic b2 = new Basic(10,"Miguel", base);
+        //Point p1 = new Point(5,2,"Norte");
+        //Point p2 = new Point(5,2,"Sul");
 
-        Basic pr1 = new Basic(3,"Joao", base);
-        Cache c3 = new Cache ("basic",p1,"dificil",0,"geocache3",cbase);
-        Cache c4 = new Cache ("basic",p1,"facil",0,"geocache4",cbase);
-        pr1.insertCache(c3,cbase);
-        pr1.insertCache(c4,cbase);
-        Item i2 = new Item(1,"tu madre");
-        c3.inserir_item(i2,cbase);
+        //Basic pr1 = new Basic(3,"Joao", base);
+        //Cache c3 = new Cache ("basic",p1,"dificil",0,"geocache3",cbase);
+        //Cache c4 = new Cache ("basic",p1,"facil",0,"geocache4",cbase);
+        //pr1.insertCache(c3,cbase);
+        //pr1.insertCache(c4,cbase);
+        //Item i2 = new Item(1,"tu madre");
+        //c3.inserir_item(i2,cbase);
 
 
-        c3.print_items();
        // pr1.findCachesPremiumWithObjects(cbase);
-        cbase.printDBcaches();
+        //cbase.printDBcaches();
         //System.out.println(cbase.toString());
 
       //  Admin a1 = new Admin(4, "Ze", base);
@@ -100,7 +97,7 @@ public class Main {
         //p.printCaches();
         */
 
-       //System.out.println(base.toString());
+       base.printUsers();
     }
 
 
@@ -116,13 +113,13 @@ public class Main {
             String tipo = fields[2];
             if (tipo.equals("basic")){
                 Basic b = new Basic(Integer.parseInt(id), nome);
-                base.getBasics().add(b);
+                base.getBasics().put(b.ID, b);
             }else if(tipo.equals("premium")){
                 Premium p = new Premium(Integer.parseInt(id), nome);
-                base.getPremiums().add(p);
+                base.getPremiums().put(p.ID, p);
             }else{
                 Admin a = new Admin(Integer.parseInt(id), nome);
-                base.getAdmins().add(a);
+                base.getAdmins().put(a.ID, a);
             }
         }
         }

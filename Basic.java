@@ -22,7 +22,7 @@ public class Basic {
     public Basic(int ID, String nome, UsersBase base) {
         this.ID = ID;
         this.nome = nome;
-        base.getBasics().add(this);
+        base.getBasics().put(ID,this);
     }
 
     public Basic(int ID, String nome) {
