@@ -19,6 +19,12 @@ public class Basic {
 
     SeparateChainingHashST<String, Cache> caches = new SeparateChainingHashST<>();
 
+    public Basic(int ID, String nome, UsersBase base) {
+        this.ID = ID;
+        this.nome = nome;
+        base.getBasics().add(this);
+    }
+
     public Basic(int ID, String nome) {
         this.ID = ID;
         this.nome = nome;

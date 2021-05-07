@@ -9,13 +9,16 @@ public class Main {
     public static void main(String[] args) {
         UsersBase base = new UsersBase();
         CacheBase cbase = new CacheBase();
-        //  readUtilizadores("data/utilizadores.txt",base);
-        Basic b1 = new Basic(1,"Daniel");
-        base.getBasics().add(b1);
-        Basic b2 = new Basic(2,"Miguel");
-        base.getBasics().add(b2);
+        //readUtilizadores("data/utilizadores.txt",base);
+        Basic b1 = new Basic(1,"Daniel", base);
+        //base.getBasics().add(b1);
+        Basic b2 = new Basic(2,"Miguel", base);
+        //base.getBasics().add(b2);
         Point p1 = new Point(5,2,"Norte");
         Point p2 = new Point(5,2,"Sul");
+
+        Premium pr1 = new Premium(3,"Joao", base);
+        Admin a1 = new Admin(4, "Ze", base);
 
 
         Cache c1 = new Cache("basic",p1,"facil",  "geocache1");
@@ -23,13 +26,12 @@ public class Main {
         //  Cache c2 = new Cache("basic",p2,"facil",  "geocache2");
         //  cbase.getCaches().add(c2);
 
-        b1.insertCache(c1,cbase);
+        //b1.insertCache(c1,cbase);
       //  b1.printCaches();
 
-        System.out.println(cbase.toString());
+        //System.out.println(cbase.toString());
 
-
-    /*    Premium pr1 = new Premium(3,"Joao");
+    /*  Premium pr1 = new Premium(3,"Joao");
         Cache c3 = new Cache ("premium",p1,"dificil",0,"geocache3");
         cbase.getCaches().add(c3);
 
@@ -85,7 +87,7 @@ public class Main {
         //p.printCaches();
         */
 
-       // System.out.println(base.toString());
+       System.out.println(base.toString());
     }
 
 

@@ -11,12 +11,17 @@ public class Premium extends Basic {
     public ArrayList<Cache> cachesVisitadasP;
 
 
+    public Premium(int ID, String nome, UsersBase base) {
+        super(ID, nome);
+        base.getPremiums().add(this);
+    }
+
     public Premium(int ID, String nome) {
         super(ID, nome);
     }
 
-    public Premium(int ID, String nome, ArrayList<Cache> cachesEscondidasP, ArrayList<Cache> cachesVisitadasP) {
-        super(ID, nome);
+    public Premium(int ID, String nome,UsersBase base, ArrayList<Cache> cachesEscondidasP, ArrayList<Cache> cachesVisitadasP) {
+        super(ID, nome, base);
         this.cachesEscondidasP = cachesEscondidasP;
         this.cachesVisitadasP = cachesVisitadasP;
     }
@@ -75,11 +80,6 @@ public class Premium extends Basic {
         return "Premium{" +
                 "ID=" + ID +
                 ", nome='" + nome + '\'' +
-                ", cachesVisitadasB=" + cachesVisitadasB +
-                ", items=" + items +
-                ", cachesEscondidasB=" + cachesEscondidasB +
-                ", cachesEscondidasP=" + cachesEscondidasP +
-                ", cachesVisitadasP=" + cachesVisitadasP +
                 '}';
     }
 }
