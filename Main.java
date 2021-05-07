@@ -9,8 +9,10 @@ public class Main {
     public static void main(String[] args) {
         UsersBase base = new UsersBase();
         CacheBase cbase = new CacheBase();
-        readUtilizadores("data/utilizadores.txt",base);
-        //Basic b1 = new Basic(8,"Daniel", base);
+       // readUtilizadores("data/utilizadores.txt",base);
+        Basic b1 = new Basic(1,"Daniel", base);
+        Admin a1 = new Admin(2,"TaMere", base);
+
         //Basic b2 = new Basic(10,"Miguel", base);
         //Point p1 = new Point(5,2,"Norte");
         //Point p2 = new Point(5,2,"Sul");
@@ -24,20 +26,20 @@ public class Main {
         //c3.inserir_item(i2,cbase);
 
 
-       // pr1.findCachesPremiumWithObjects(cbase);
+        // pr1.findCachesPremiumWithObjects(cbase);
         //cbase.printDBcaches();
         //System.out.println(cbase.toString());
 
-      //  Admin a1 = new Admin(4, "Ze", base);
+        //  Admin a1 = new Admin(4, "Ze", base);
 
 
-       // Cache c1 = new Cache("basic",p1,"facil",  "geocache1");
+        // Cache c1 = new Cache("basic",p1,"facil",  "geocache1");
         // cbase.getCaches().add(c1);
         //  Cache c2 = new Cache("basic",p2,"facil",  "geocache2");
         //  cbase.getCaches().add(c2);
 
         //b1.insertCache(c1,cbase);
-      //  b1.printCaches();
+        //  b1.printCaches();
 
         //System.out.println(cbase.toString());
 
@@ -97,7 +99,10 @@ public class Main {
         //p.printCaches();
         */
 
-       base.printUsers();
+        base.printUsers();
+        System.out.println("////////////////////");
+        a1.remover_utilizador(1,base);
+        base.printUsers();
     }
 
 
@@ -122,7 +127,7 @@ public class Main {
                 base.getAdmins().put(a.ID, a);
             }
         }
-        }
+    }
 
      public static void readCaches(String path, CacheBase cbase){
          In in = new In(path);
