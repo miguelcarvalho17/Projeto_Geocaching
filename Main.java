@@ -10,18 +10,31 @@ public class Main {
         UsersBase base = new UsersBase();
         CacheBase cbase = new CacheBase();
         //readUtilizadores("data/utilizadores.txt",base);
-        Basic b1 = new Basic(1,"Daniel", base);
+      /*  Basic b1 = new Basic(1,"Daniel", base);
         //base.getBasics().add(b1);
         Basic b2 = new Basic(2,"Miguel", base);
-        //base.getBasics().add(b2);
+        //base.getBasics().add(b2);*/
         Point p1 = new Point(5,2,"Norte");
         Point p2 = new Point(5,2,"Sul");
 
-        Premium pr1 = new Premium(3,"Joao", base);
-        Admin a1 = new Admin(4, "Ze", base);
+        Basic pr1 = new Basic(3,"Joao", base);
+        Cache c3 = new Cache ("basic",p1,"dificil",0,"geocache3",cbase);
+        Cache c4 = new Cache ("basic",p1,"facil",0,"geocache4",cbase);
+        pr1.insertCache(c3,cbase);
+        pr1.insertCache(c4,cbase);
+        Item i2 = new Item(1,"tu madre");
+        c3.inserir_item(i2,cbase);
 
 
-        Cache c1 = new Cache("basic",p1,"facil",  "geocache1");
+        c3.print_items();
+       // pr1.findCachesPremiumWithObjects(cbase);
+        cbase.printDBcaches();
+        //System.out.println(cbase.toString());
+
+      //  Admin a1 = new Admin(4, "Ze", base);
+
+
+       // Cache c1 = new Cache("basic",p1,"facil",  "geocache1");
         // cbase.getCaches().add(c1);
         //  Cache c2 = new Cache("basic",p2,"facil",  "geocache2");
         //  cbase.getCaches().add(c2);
@@ -87,7 +100,7 @@ public class Main {
         //p.printCaches();
         */
 
-       System.out.println(base.toString());
+       //System.out.println(base.toString());
     }
 
 
@@ -129,7 +142,7 @@ public class Main {
 
              Point p = new Point(Double.parseDouble(latitude), Double.parseDouble(longitude), regiao);
              Cache c = new Cache(tipo, p, dificuldade, Integer.parseInt(nitems), nome);
-             cbase.getCaches().add(c);
+             cbase.getDB_caches().put(c.getNome(),c);
          }
      }
     }

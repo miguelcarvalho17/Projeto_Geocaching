@@ -45,7 +45,7 @@ public class Basic {
             return;
         }
         this.caches.put(c.getNome(), c);
-        cbase.getCaches().add(c);
+        cbase.getDB_caches().put(c.getNome(),c);
     }
 
 
@@ -107,16 +107,16 @@ public class Basic {
     }
   }
 
-    public void FindNonVisitedCaches(CacheBase cbase){
+   /* public void FindNonVisitedCaches(CacheBase cbase){
         System.out.println(this.nome+" nao visitou:");
         for (Cache c : cbase.getCaches()){
             if (!this.cachesVisitadasB.contains(c)) {
                 System.out.println(c.toString());
             }
         }
-    }
+    }*/
 
-    public void FindNonVisitedCaches_Regiao(CacheBase cbase, String regiao) {
+   /* public void FindNonVisitedCaches_Regiao(CacheBase cbase, String regiao) {
         System.out.println(this.nome + " nao visitou:");
         for (Cache c : cbase.getCaches()) {
             if (!this.cachesVisitadasB.contains(c)) {
@@ -125,9 +125,9 @@ public class Basic {
                 }
             }
         }
-    }
+    }*/
 
-    public void trocarItem(Item i, String nome, Item i2) {
+   /* public void trocarItem(Item i, String nome, Item i2) {
         Cache c = this.searchCache(nome);
 
         if (c.getItems().get(i.getID()) == null) {
@@ -138,7 +138,7 @@ public class Basic {
         c.remover_item(i.getID()); // i = sai da cache
         c.inserir_item(i2);   // i2 entra
         this.items.add(i); // guarda o item que o user removeu no seu arraylist de items
-    }
+    }*/
 
     @Override
     public String toString() {

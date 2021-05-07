@@ -45,6 +45,15 @@ public class Cache {
     this.nome = nome;
   }
 
+  public Cache(String tipo, Point coordenadas, String dificuldade, int nitens, String nome, CacheBase cbase) {
+    this.tipo = tipo;
+    this.coordenadas = coordenadas;
+    this.dificuldade = dificuldade;
+    this.nItems = nitens;
+    this.nome = nome;
+    cbase.getDB_caches().put(this.getNome(),this);
+  }
+
   public String getNome() {
     return nome;
   }
@@ -85,12 +94,16 @@ public class Cache {
     this.nItems = nItems;
   }
 
-  public void inserir_item(Item i) {
+  public void inserir_item(Item i, CacheBase cbase) {
     if (this.items.contains(i.getID())) {
       System.out.println(" Este item ja existe: " + i);
       return;
     }
+    cbase.getDB_caches().delete(this.getNome());
+
     this.items.put(i.getID(), i);
+    //cbase.getDB_caches().get(this.getNome()).inserir_item(i,cbase);
+    cbase.getDB_caches().put(this.getNome(),this);
     //System.out.println("Item inserido na " + this.getNome());
     this.nItems++;
   }
@@ -158,6 +171,15 @@ public class Cache {
 
   @Override
   public String toString() {
-    return  "nome='" + nome + '\'' + ", tipo='" + tipo + '\'' + ", coordenadas=" + coordenadas + ", dificuldade='" + dificuldade + '\'' + ", historico=" + historico + ", nItems=" + nItems + '}';
+
+    this.print_items();
+    return "Cache{" +
+            "nome='" + nome + '\'' +
+            ", tipo='" + tipo + '\'' +
+            ", coordenadas=" + coordenadas +
+            ", dificuldade='" + dificuldade + '\'' +
+            ", historico=" + historico +
+            ", nItems=" + nItems +
+            '}';
   }
 }

@@ -58,14 +58,17 @@ public class Premium extends Basic {
         }
 
         this.caches.put(c.getNome(), c);
+
+
     }
 
     public void findCachesPremiumWithObjects(CacheBase cbasePremium) {
 
-        for (Cache c : cbasePremium.getCaches()) {
-            if (c.getTipo().equals("premium")) {
-                if(c.getnItems()>0){
-                    System.out.println(c.toString());
+
+        for ( String c : cbasePremium.getDB_caches().keys()) {
+            if (cbasePremium.getDB_caches().get(c).getTipo().equals("premium")) {
+                if(cbasePremium.getDB_caches().get(c).getnItems()>0){
+                    System.out.println(cbasePremium.getDB_caches().get(c).toString());
                 }
             }
         }
