@@ -22,8 +22,7 @@ public class Cache {
   private int nItems;
 
   RedBlackBST<Integer, Item> items = new RedBlackBST<>();
-  RedBlackBST<Integer, Travel_bugs> travelBugs = new RedBlackBST<>();
-
+  //RedBlackBST<Integer, Travel_bugs> travelBugs = new RedBlackBST<>();
 
   public RedBlackBST<Integer, Item> getItems() {
     return items;
@@ -159,16 +158,11 @@ public class Cache {
   }
 
   public void print_items() {
-      if (this.items.isEmpty() && this.travelBugs.isEmpty()) {
+      if (this.items.isEmpty()) {
         System.out.println("Esta cache nao tem items");
       }
       for (Integer si : this.items.keys()) {
         System.out.println("Items existentes na " + this.getNome() +":"+ this.items.get(si));
-      }
-      if (!this.travelBugs.isEmpty()){
-      for (Integer se: this.travelBugs.keys()){
-        System.out.println("TravelBugs existentes na cache: " + this.travelBugs.get(se));
-      }
       }
   }
 

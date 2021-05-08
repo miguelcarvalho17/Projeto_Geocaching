@@ -144,7 +144,7 @@ public class Basic {
         }
     }
 
-    public void trocarItem(Item i, String nome, Item i2, CacheBase cbase) {
+    public void trocarItem(Item i, String nome, Item i2, CacheBase cbase, Cache c2missao) {
 
             Cache aux = searchCache(nome);
            // Cache aux = this.caches.get(nome);// procurar nas caches globais, nao nas do utilizador
@@ -154,12 +154,25 @@ public class Basic {
                 System.out.println("Item nao encontrado");
                 return;
             }
-
-           //this.items.set(this.items.indexOf(i2),i);
-
+            if (i instanceof Travel_bugs){
                 aux.remover_item(i.getID(), cbase); // i = sai da cache
                 this.items.add(i);
                 this.items.remove(i2);
+                aux.remover_item(i.getID(), cbase); // i = sai da cache
+
+                aux.inserir_item(i2, cbase);   // i2 entra
+
+                ((Travel_bugs) i).setLocalizacao(aux);
+                System.out.println("Este travel bug tem de ser levado para " +c2missao.getNome());
+                ((Travel_bugs) i).setMissao(c2missao);
+            }else{
+                aux.remover_item(i.getID(), cbase); // i = sai da cache
+                this.items.add(i);
+                this.items.remove(i2);
+                aux.remover_item(i.getID(), cbase); // i = sai da cache
+
+                aux.inserir_item(i2, cbase);   // i2 entra
+            }
 
                 LocalDateTime d = LocalDateTime.now();
                 Random rand = new Random();
@@ -168,9 +181,6 @@ public class Basic {
                 Log l = new Log(acontecimento,d, rand_int1);
                 aux.getLogs().add(l);
 
-           aux.remover_item(i.getID(), cbase); // i = sai da cache
-
-            aux.inserir_item(i2, cbase);   // i2 entra
         }
     }
 
@@ -178,6 +188,11 @@ public class Basic {
         Cache aux = searchCache(nome);
 
         if(this.items.contains(i)){
+            if (i instanceof Travel_bugs){
+                if (aux.getNome().equals(((Travel_bugs) i).getMissao().getNome())){
+                    System.out.println("Missao cumprida");
+                }
+            }
             aux.inserir_item(i,cbase);
 
             LocalDateTime d = LocalDateTime.now();

@@ -11,4 +11,20 @@ public class Travel_bugs extends Item {
   public Travel_bugs(int ID, String objeto) {
     super(ID, objeto);
   }
+
+  public Cache getLocalizacao() {
+    return localizacao;
+  }
+
+  public void setLocalizacao(Cache localizacao) {
+    this.localizacao = localizacao;
+  }
+
+  public Cache getMissao() {
+    return Missao;
+  }
+
+  public void setMissao(Cache missao) {
+    Missao = missao;
+  }
 }

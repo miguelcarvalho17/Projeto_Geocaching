@@ -11,11 +11,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Main {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        ArrayList<Log> l = new ArrayList<>();
         UsersBase base = new UsersBase();
         CacheBase cbase = new CacheBase();
-        ArrayList<Log> l = new ArrayList<>();
         //readUtilizadores("data/utilizadores.txt",base);
         //readCaches("data/geocaches.txt", cbase);
         Premium b1 = new Premium(1, "Daniel", base);
@@ -25,18 +25,22 @@ public class Main {
         //Basic b2 = new Basic(10,"Miguel", base);
         Point p1 = new Point(5, 2, "Norte");
         Cache c1 = new Cache("premium", p1, "facil", 0, "geocache1", cbase, l);
+        Cache c2 = new Cache("basic", p1, "medio", 0, "geocache3", cbase, l);
 
-        Item i1 = new Item(1, "moeda");
+        Travel_bugs i1 = new Travel_bugs(1, "moeda");
         Item i2 = new Item(2, "caneta");
         b1.visitCache(c1);
         c1.inserir_item(i1, cbase);
         b1.inserirItemUser(i2);
-        b1.userInsertItemCache(i2,cbase,"geocache1");
-        b1.userRemoveItemCache(i2,cbase,"geocache1");
-      //  b1.trocarItem(i1,"geocache1", i2, cbase);
+        //b1.userInsertItemCache(i2,cbase,"geocache1");
+        //b1.userRemoveItemCache(i2,cbase,"geocache1");
+        b1.trocarItem(i1,"geocache1", i2, cbase, c2);
+
+        b1.visitCache(c2);
+        b1.userInsertItemCache(i1,cbase, "geocache3");
 
         //c1.remover_item(1, cbase);
-        cbase.printDBcaches();
+        //cbase.printDBcaches();
       //  Item i1 = new Item(1, "moeda");
       //  Item i2 = new Item(2, "caneta");
       //  b2.inserirItemUser(i2);
@@ -134,7 +138,6 @@ public class Main {
             if(!base.getBasics().isEmpty()){
                 BufferedWriter writer = new BufferedWriter(new FileWriter(utxt, true));
             for (Integer si :  base.getBasics().keys()){
-
                 writer.write(String.valueOf((base.getBasics().get(si).ID)));
                 writer.write(", ");
                 writer.write(base.getBasics().get(si).nome);
