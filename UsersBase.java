@@ -5,6 +5,7 @@ import edu.princeton.cs.algs4.RedBlackBST;
 import java.util.ArrayList;
 
 public class UsersBase {
+    private static String PATH = "data/removed.txt";
 
     private RedBlackBST<Integer, Basic> basics = new RedBlackBST<>();                /* Array to store users basic */
     private RedBlackBST<Integer, Admin> admins = new RedBlackBST<>();                /* Array to store admins */
@@ -54,6 +55,35 @@ public class UsersBase {
             System.out.println(this.getAdmins().get(so) + "\n");
         }
     }
+
+    public void removeAUser(Integer id){
+        for (Integer si : this.getBasics().keys()){
+            if (this.getBasics().get(si).ID == id){
+                Basic b = this.getBasics().get(si);
+                b.WriteUserToFile(b, PATH);
+                this.getBasics().delete(id);
+                return;
+            }
+        }
+        for (Integer se : this.getPremiums().keys()){
+            if (this.getPremiums().get(se).ID == id){
+                Premium b = this.getPremiums().get(se);
+                b.WriteUserToFile(b, PATH);
+                this.getPremiums().delete(id);
+                return;
+            }
+        }
+        for (Integer so : this.getAdmins().keys()){
+            if (this.getAdmins().get(so).ID == id){
+                Admin b = this.getAdmins().get(so);
+                b.WriteUserToFile(b, PATH);
+                this.getAdmins().delete(id);
+                return;
+            }
+        }
+
+    }
+
 
     @Override
     public String toString() {

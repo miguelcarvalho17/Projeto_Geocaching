@@ -2,6 +2,8 @@ package Projeto_Geocaching;
 
 import edu.princeton.cs.algs4.SeparateChainingHashST;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Random;
@@ -100,7 +102,7 @@ public class Premium extends Basic {
 
             aux.inserir_item(i2, cbase);   // i2 entra
 
-            ((Travel_bugs) i).setLocalizacao(aux);
+            ((Travel_bugs) i).setPontopartida(aux);
             System.out.println("Este travel bug tem de ser levado para " +c2missao.getNome());
             ((Travel_bugs) i).setMissao(c2missao);
         }else{
@@ -111,13 +113,6 @@ public class Premium extends Basic {
 
             aux.inserir_item(i2, cbase);   // i2 entra
         }
-
-        LocalDateTime d = LocalDateTime.now();
-        Random rand = new Random();
-        int rand_int1 = rand.nextInt(1000);
-        String acontecimento = "Item trocados: " + i.getObjeto() + "," + i2.getObjeto();
-        Log l = new Log(acontecimento,d, rand_int1);
-        aux.getLogs().add(l);
     }
 
     public void removerCache(String nome, CacheBase cbase) {
@@ -155,9 +150,25 @@ public class Premium extends Basic {
         }
     }
 
-    public void encontrar_travelBug(Travel_bugs t) {
-
+    public void WriteUserToFile(Premium b, String path){
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path, true)); //append true
+            writer.write(String.valueOf(b.ID));
+            writer.write(", ");
+            writer.write(b.nome);
+            writer.write(", ");
+            writer.write("premium");
+            for (Item i : b.items){
+                writer.write(", ");
+                writer.write(i.getObjeto());
+            }
+            writer.newLine();
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
 
     @Override
     public String toString() {

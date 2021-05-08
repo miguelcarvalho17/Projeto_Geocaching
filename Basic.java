@@ -1,8 +1,9 @@
 package Projeto_Geocaching;
 
-import edu.princeton.cs.algs4.RedBlackBST;
 import edu.princeton.cs.algs4.SeparateChainingHashST;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Random;
@@ -162,7 +163,7 @@ public class Basic {
 
                 aux.inserir_item(i2, cbase);   // i2 entra
 
-                ((Travel_bugs) i).setLocalizacao(aux);
+                ((Travel_bugs) i).setPontopartida(aux);
                 System.out.println("Este travel bug tem de ser levado para " +c2missao.getNome());
                 ((Travel_bugs) i).setMissao(c2missao);
             }else{
@@ -173,14 +174,6 @@ public class Basic {
 
                 aux.inserir_item(i2, cbase);   // i2 entra
             }
-
-                LocalDateTime d = LocalDateTime.now();
-                Random rand = new Random();
-                int rand_int1 = rand.nextInt(1000);
-                String acontecimento = "Item trocados: " + i.getObjeto() + "," + i2.getObjeto();
-                Log l = new Log(acontecimento,d, rand_int1);
-                aux.getLogs().add(l);
-
         }
     }
 
@@ -194,13 +187,6 @@ public class Basic {
                 }
             }
             aux.inserir_item(i,cbase);
-
-            LocalDateTime d = LocalDateTime.now();
-            Random rand = new Random();
-            int rand_int1 = rand.nextInt(1000);
-            String acontecimento = "Utilizador " + this.nome + " inseriu na cache : " + i.getObjeto() ;
-            Log l = new Log(acontecimento,d, rand_int1);
-            aux.getLogs().add(l);
             this.items.remove(i);
         }
     }
@@ -209,18 +195,31 @@ public class Basic {
         Cache aux = searchCache(nome);
         if(aux.getItems().contains(i.getID())){
             aux.remover_item(i.getID(),cbase);
-            LocalDateTime d = LocalDateTime.now();
-            Random rand = new Random();
-            int rand_int1 = rand.nextInt(1000);
-            String acontecimento = "Utilizador " + this.nome + " removeu da cache : " + i.getObjeto() ;
-            Log l = new Log(acontecimento,d, rand_int1);
-            aux.getLogs().add(l);
             this.items.add(i);
         }
     }
 
     public void inserirItemUser(Item i){
         this.items.add(i);
+    }
+
+    public void WriteUserToFile(Basic b, String path){
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path, true)); //append true
+            writer.write(String.valueOf(b.ID));
+            writer.write(", ");
+            writer.write(b.nome);
+            writer.write(", ");
+            writer.write("basic");
+            for (Item i : b.items){
+                writer.write(", ");
+                writer.write(i.getObjeto());
+            }
+            writer.newLine();
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

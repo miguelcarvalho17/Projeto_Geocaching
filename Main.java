@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        ArrayList<Log> l = new ArrayList<>();
         UsersBase base = new UsersBase();
         CacheBase cbase = new CacheBase();
         //readUtilizadores("data/utilizadores.txt",base);
@@ -24,20 +23,27 @@ public class Main {
         //saveUsersTXT(base,"data/usersOUT.txt");
         //Basic b2 = new Basic(10,"Miguel", base);
         Point p1 = new Point(5, 2, "Norte");
-        Cache c1 = new Cache("premium", p1, "facil", 0, "geocache1", cbase, l);
-        Cache c2 = new Cache("basic", p1, "medio", 0, "geocache3", cbase, l);
+        Point p2 = new Point(7, -6, "Norte");
+        Cache c1 = new Cache("premium", p1, "facil", 0, "geocache1", cbase);
+        Cache c2 = new Cache("basic", p2, "medio", 0, "geocache3", cbase);
 
-        Travel_bugs i1 = new Travel_bugs(1, "moeda");
         Item i2 = new Item(2, "caneta");
-        b1.visitCache(c1);
-        c1.inserir_item(i1, cbase);
         b1.inserirItemUser(i2);
+        base.removeAUser(1);
+        //base.printUsers();
+
+
+        //Travel_bugs i1 = new Travel_bugs(1, "moeda");
+        //Item i2 = new Item(2, "caneta");
+        //b1.visitCache(c1);
+        //c1.inserir_item(i1, cbase);
+        //b1.inserirItemUser(i2);
         //b1.userInsertItemCache(i2,cbase,"geocache1");
         //b1.userRemoveItemCache(i2,cbase,"geocache1");
-        b1.trocarItem(i1,"geocache1", i2, cbase, c2);
+        //b1.trocarItem(i1,"geocache1", i2, cbase, c2);
 
-        b1.visitCache(c2);
-        b1.userInsertItemCache(i1,cbase, "geocache3");
+        //b1.visitCache(c2);
+        //b1.userInsertItemCache(i1,cbase, "geocache3");
 
         //c1.remover_item(1, cbase);
         //cbase.printDBcaches();
@@ -73,7 +79,7 @@ public class Main {
        //b1.trocarItem(i1, "geocache1", i2, cbase);
 
         //c1.print_items();
-       // cbase.printDBcaches();
+       //cbase.printDBcaches();
 
     }
 
@@ -82,7 +88,7 @@ public class Main {
         In in = new In(path);
         while (!in.isEmpty()) {
             String line = in.readLine();
-            String[] fields = line.split(",");
+            String[] fields = line.split(", ");
             String id = fields[0];
             String nome = fields[1];
             String tipo = fields[2];

@@ -58,6 +58,16 @@ public class Cache {
     cbase.getDB_caches().put(this.getNome(),this);
   }
 
+  public Cache(String tipo, Point coordenadas, String dificuldade, int nitens, String nome, CacheBase cbase) {
+    this.tipo = tipo;
+    this.coordenadas = coordenadas;
+    this.dificuldade = dificuldade;
+    this.nItems = nitens;
+    this.nome = nome;
+    this.logs = new ArrayList<>();
+    cbase.getDB_caches().put(this.getNome(),this);
+  }
+
   public String getNome() {
     return nome;
   }
@@ -133,7 +143,8 @@ public class Cache {
       LocalDateTime d = LocalDateTime.now();
       Random rand = new Random();
       int rand_int1 = rand.nextInt(1000);
-      Log l = new Log("Item removido da cache!",d, rand_int1);
+      String acontecimento = "Item removido da cache: "+ i.getObjeto();
+      Log l = new Log(acontecimento,d, rand_int1);
       this.logs.add(l);
       cbase.DB_caches.get(this.getNome()).remover_item(id, cbase);
       this.nItems--;

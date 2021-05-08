@@ -1,5 +1,8 @@
 package Projeto_Geocaching;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+
 public class Admin extends Premium {
 
   public Admin(int ID, String nome, UsersBase base) {
@@ -56,6 +59,25 @@ public class Admin extends Premium {
         base.getPremiums().delete(k);
         return;
       }
+    }
+  }
+
+  public void WriteUserToFile(Admin b, String path){
+    try {
+      BufferedWriter writer = new BufferedWriter(new FileWriter(path, true)); //append true
+      writer.write(String.valueOf(b.ID));
+      writer.write(", ");
+      writer.write(b.nome);
+      writer.write(", ");
+      writer.write("admin");
+      writer.newLine();
+      for (Item i : b.items){
+        writer.write(", ");
+        writer.write(i.getObjeto());
+      }
+      writer.close();
+    } catch (Exception e) {
+      e.printStackTrace();
     }
   }
 

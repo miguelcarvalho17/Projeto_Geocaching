@@ -4,20 +4,22 @@ import java.util.List;
 
 public class Travel_bugs extends Item {
 
-  public Cache localizacao;
+  private Cache pontopartida;
 
-  public Cache Missao;
+  private Cache Missao;
+
+  private Point localizacao;
 
   public Travel_bugs(int ID, String objeto) {
     super(ID, objeto);
   }
 
-  public Cache getLocalizacao() {
-    return localizacao;
+  public Cache getPontopartida() {
+    return pontopartida;
   }
 
-  public void setLocalizacao(Cache localizacao) {
-    this.localizacao = localizacao;
+  public void setPontopartida(Cache pontopartida) {
+    this.pontopartida = pontopartida;
   }
 
   public Cache getMissao() {
@@ -26,5 +28,13 @@ public class Travel_bugs extends Item {
 
   public void setMissao(Cache missao) {
     Missao = missao;
+  }
+
+  public Point getLocalizacao() {
+    return localizacao;
+  }
+
+  public void setLocalizacao(Point localizacao) {
+    this.localizacao = localizacao;
   }
 }
