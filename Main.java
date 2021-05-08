@@ -30,7 +30,11 @@ public class Main {
         Item i2 = new Item(2, "caneta");
         b1.visitCache(c1);
         c1.inserir_item(i1, cbase);
-        b1.trocarItem(i1,"geocache1", i2, cbase);
+        b1.inserirItemUser(i2);
+        b1.userInsertItemCache(i2,cbase,"geocache1");
+        b1.userRemoveItemCache(i2,cbase,"geocache1");
+      //  b1.trocarItem(i1,"geocache1", i2, cbase);
+
         //c1.remover_item(1, cbase);
         cbase.printDBcaches();
       //  Item i1 = new Item(1, "moeda");

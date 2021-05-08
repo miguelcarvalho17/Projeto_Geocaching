@@ -179,6 +179,13 @@ public class Basic {
 
         if(this.items.contains(i)){
             aux.inserir_item(i,cbase);
+
+            LocalDateTime d = LocalDateTime.now();
+            Random rand = new Random();
+            int rand_int1 = rand.nextInt(1000);
+            String acontecimento = "Utilizador " + this.nome + " inseriu na cache : " + i.getObjeto() ;
+            Log l = new Log(acontecimento,d, rand_int1);
+            aux.getLogs().add(l);
             this.items.remove(i);
         }
     }
@@ -187,6 +194,12 @@ public class Basic {
         Cache aux = searchCache(nome);
         if(aux.getItems().contains(i.getID())){
             aux.remover_item(i.getID(),cbase);
+            LocalDateTime d = LocalDateTime.now();
+            Random rand = new Random();
+            int rand_int1 = rand.nextInt(1000);
+            String acontecimento = "Utilizador " + this.nome + " removeu da cache : " + i.getObjeto() ;
+            Log l = new Log(acontecimento,d, rand_int1);
+            aux.getLogs().add(l);
             this.items.add(i);
         }
     }
