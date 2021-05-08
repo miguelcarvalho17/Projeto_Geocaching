@@ -43,7 +43,20 @@ public class Admin extends Premium {
   }
 
   public void remover_utilizador(int id, UsersBase base) {
+    for (int i : base.getBasics().keys()) {
 
+      if (base.getBasics().get(i).ID == id) {
+        base.getBasics().delete(i);
+        return;
+      }
+    }
+    for (int k : base.getPremiums().keys()) {
+
+      if (base.getPremiums().get(k).ID == id) {
+        base.getPremiums().delete(k);
+        return;
+      }
+    }
   }
 
 
