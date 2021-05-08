@@ -68,12 +68,13 @@ public class Basic {
         System.out.println("Impossivel remover cache!");
     }
 
-    public void editarCache(String nome, String tipo, Point coordenadas, String dificuldade) {
+    public void editarCache(String nome,Point coordenadas, String dificuldade,CacheBase cbase) {
         Cache c = this.caches.get(nome);
         if (c != null) {
+            cbase.DB_caches.delete(c.getNome());
             c.setCoordenadas(coordenadas);
             c.setDificuldade(dificuldade);
-            c.setTipo(tipo);
+            cbase.DB_caches.put(c.getNome(),c);
             return;
         }
         System.out.println("Impossivel editar uma cache que nao existe!");

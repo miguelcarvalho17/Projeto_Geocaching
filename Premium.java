@@ -85,6 +85,30 @@ public class Premium extends Basic {
 
     }
 
+    public void removerCache(String nome, CacheBase cbase) {
+        Cache c = this.caches.get(nome);
+        if (c != null) {
+            System.out.println("Cache removed: " + c.getNome());
+            this.caches.delete(nome);
+            cbase.DB_caches.delete(nome);
+            return;
+        }
+        System.out.println("Impossivel remover cache!");
+    }
+
+    public void editarCache(String nome, String tipo, Point coordenadas, String dificuldade, CacheBase cbase) {
+        Cache c = this.caches.get(nome);
+        if (c != null ) {
+            cbase.DB_caches.delete(c.getNome());
+            c.setCoordenadas(coordenadas);
+            c.setDificuldade(dificuldade);
+            c.setTipo(tipo);
+            cbase.DB_caches.put(c.getNome(),c);
+            return;
+        }
+        System.out.println("Impossivel editar uma cache que nao existe!");
+    }
+
     public void findCachesPremiumWithObjects(CacheBase cbasePremium) {
 
         for ( String c : cbasePremium.getDB_caches().keys()) {
