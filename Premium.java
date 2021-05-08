@@ -2,7 +2,9 @@ package Projeto_Geocaching;
 
 import edu.princeton.cs.algs4.SeparateChainingHashST;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Premium extends Basic {
 
@@ -37,6 +39,12 @@ public class Premium extends Basic {
     }
 
     public void visitCache(Cache c) {
+        LocalDateTime d = LocalDateTime.now();
+        Random rand = new Random();
+        int rand_int1 = rand.nextInt(1000);
+        String acontecimento = "Cache visitada por " + this.nome;
+        Log l = new Log(acontecimento,d, rand_int1);
+        c.getLogs().add(l);
         this.cachesVisitadasB.add(c);
     }
 
@@ -75,14 +83,18 @@ public class Premium extends Basic {
             return;
         }
 
-        //this.items.set(this.items.indexOf(i2),i);
-
         aux.remover_item(i.getID(), cbase); // i = sai da cache
         this.items.add(i);
+        this.items.remove(i2);
+
+        LocalDateTime d = LocalDateTime.now();
+        Random rand = new Random();
+        int rand_int1 = rand.nextInt(1000);
+        String acontecimento = "Item trocados: " + i.getObjeto() + "," + i2.getObjeto();
+        Log l = new Log(acontecimento,d, rand_int1);
+        aux.getLogs().add(l);
 
         aux.inserir_item(i2, cbase);   // i2 entra
-
-
     }
 
     public void removerCache(String nome, CacheBase cbase) {

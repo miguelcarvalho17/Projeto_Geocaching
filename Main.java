@@ -27,8 +27,10 @@ public class Main {
         Cache c1 = new Cache("premium", p1, "facil", 0, "geocache1", cbase, l);
 
         Item i1 = new Item(1, "moeda");
+        Item i2 = new Item(2, "caneta");
         b1.visitCache(c1);
         c1.inserir_item(i1, cbase);
+        b1.trocarItem(i1,"geocache1", i2, cbase);
         //c1.remover_item(1, cbase);
         cbase.printDBcaches();
       //  Item i1 = new Item(1, "moeda");

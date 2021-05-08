@@ -118,7 +118,8 @@ public class Cache {
     LocalDateTime d = LocalDateTime.now();
     Random rand = new Random();
     int rand_int1 = rand.nextInt(1000);
-    Log l = new Log("Item inserido na cache!",d, rand_int1);
+    String acontecimento = "Item inserido na cache: "+ i.getObjeto();
+    Log l = new Log(acontecimento,d, rand_int1);
     this.logs.add(l);
     cbase.getDB_caches().put(this.getNome(),this);
     this.nItems++;

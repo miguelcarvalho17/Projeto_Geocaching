@@ -155,7 +155,18 @@ public class Basic {
                 return;
             }
 
-            this.items.set(this.items.indexOf(i2),i);
+           //this.items.set(this.items.indexOf(i2),i);
+
+                aux.remover_item(i.getID(), cbase); // i = sai da cache
+                this.items.add(i);
+                this.items.remove(i2);
+
+                LocalDateTime d = LocalDateTime.now();
+                Random rand = new Random();
+                int rand_int1 = rand.nextInt(1000);
+                String acontecimento = "Item trocados: " + i.getObjeto() + "," + i2.getObjeto();
+                Log l = new Log(acontecimento,d, rand_int1);
+                aux.getLogs().add(l);
 
            aux.remover_item(i.getID(), cbase); // i = sai da cache
 
