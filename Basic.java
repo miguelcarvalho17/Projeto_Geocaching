@@ -30,6 +30,9 @@ public class Basic {
         this.nome = nome;
     }
 
+    public Basic(){
+    }
+
     public void visitCache(Cache c) {
         this.cachesVisitadasB.add(c);
     }

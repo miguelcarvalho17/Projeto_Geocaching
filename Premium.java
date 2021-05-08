@@ -50,7 +50,7 @@ public class Premium extends Basic {
         System.out.println("Cache nao encontrada!");
     }
 
-    public void insertCache(Cache c) {
+    public void insertCache(Cache c, CacheBase cbase) {
 
         if (this.caches.contains(c.getNome())) {
             System.out.println(" Esta cache ja existe: " + c);
@@ -58,12 +58,30 @@ public class Premium extends Basic {
         }
 
         this.caches.put(c.getNome(), c);
+        cbase.DB_caches.put(c.getNome(), c);
+    }
+
+    public void trocarItem(Item i, String nome, Item i2, CacheBase cbase) {
+        Cache aux = searchCache(nome);
+        // Cache aux = this.caches.get(nome);// procurar nas caches globais, nao nas do utilizador
+         // se a cache for do tipo premium um user basic nao pode trocar items.
+
+        if (aux.getItems().get(i.getID()) == null){
+            System.out.println("Item nao encontrado");
+            return;
+        }
+
+        //this.items.set(this.items.indexOf(i2),i);
+
+        aux.remover_item(i.getID(), cbase); // i = sai da cache
+        this.items.add(i);
+
+        aux.inserir_item(i2, cbase);   // i2 entra
 
 
     }
 
     public void findCachesPremiumWithObjects(CacheBase cbasePremium) {
-
 
         for ( String c : cbasePremium.getDB_caches().keys()) {
             if (cbasePremium.getDB_caches().get(c).getTipo().equals("premium")) {

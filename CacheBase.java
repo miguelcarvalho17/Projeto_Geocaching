@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
    SeparateChainingHashST<String, Cache> DB_caches = new SeparateChainingHashST<>();
 
-
     public CacheBase() {
     }
 

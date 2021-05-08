@@ -11,6 +11,10 @@ public class Item {
     this.objeto = objeto;
   }
 
+  public Item(String objeto) {
+    this.objeto = objeto;
+  }
+
   public int getID() {
     return ID;
   }

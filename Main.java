@@ -13,6 +13,7 @@ public class Main {
         UsersBase base = new UsersBase();
         CacheBase cbase = new CacheBase();
         //readUtilizadores("data/utilizadores.txt",base);
+        readCaches("data/geocaches.txt", cbase);
         Premium b1 = new Premium(1, "Daniel", base);
         Basic b2 = new Basic(2, "Miguel", base);
 
@@ -23,29 +24,25 @@ public class Main {
         Item i2 = new Item(2, "tu padre");
 
 
-        Cache c1 = new Cache("premium", p1, "facil", 0, "geocache1", cbase);
+        //Cache c1 = new Cache("premium", p1, "facil", 0, "geocache1", cbase);
         // Cache c3 = new Cache ("basic",p1,"dificil",0,"geocache3",cbase);
-        b1.insertCache(c1, cbase);
-        b1.visitCache(c1);
-        b2.visitCache(c1);
-        c1.inserir_item(i1, cbase);
+        //b1.insertCache(c1, cbase);
+        //b1.visitCache(c1);
+        //b2.visitCache(c1);
+        //c1.inserir_item(i1, cbase);
     //    c1.print_items();
         b2.inserirItemUser(i2);
 
       //  System.out.println(b2.cachesVisitadasB);
-
      /*   for (Item i : b1.items) {
             System.out.println(i.getID() + " " + i.getObjeto() + "\n");
         }
+       */
 
-        for (Item i : b1.items) {
-            System.out.println(i.getID() + " " + i.getObjeto() + "\n");
-        }*/
+       //b1.trocarItem(i1, "geocache1", i2, cbase);
 
-       b2.trocarItem(i1, "geocache1", i2, cbase);
-
-        c1.print_items();
-
+        //c1.print_items();
+        cbase.printDBcaches();
 
     }
 
@@ -75,17 +72,32 @@ public class Main {
         In in = new In(path);
         while (!in.isEmpty()) {
             String line = in.readLine();
-            String[] fields = line.split(",");
+            String[] fields = line.split(", ");
             String nome = fields[0];
             String tipo = fields[1];
-            String dificuldade = fields[2];
-            String regiao = fields[3];
-            String latitude = fields[4];
-            String longitude = fields[5];
+            String latitude = fields[2];
+            String longitude = fields[3];
+            String regiao = fields[4];
+            String dificuldade = fields[5];
             String nitems = fields[6];
 
+            int items = Integer.parseInt(nitems);
+            String[] ids = new String[items];
+            String[] objetos = new String[items];
+            Item[] items_cache = new Item[items];
+
+            for (int i = 0, k = 0; i < items*2 && k < items; i+=2, k++){
+                ids[k] = fields[7+i];
+                objetos[k] = fields[7+i+1];
+                items_cache[k] =  new Item(Integer.parseInt(ids[k]), objetos[k]);
+            }
+
+
             Point p = new Point(Double.parseDouble(latitude), Double.parseDouble(longitude), regiao);
-            Cache c = new Cache(tipo, p, dificuldade, Integer.parseInt(nitems), nome);
+            Cache c = new Cache(tipo, p, dificuldade, nome);
+            for (int i = 0; i < items; i++){
+                c.inserir_item(items_cache[i], cbase);
+            }
             cbase.getDB_caches().put(c.getNome(), c);
         }
     }
