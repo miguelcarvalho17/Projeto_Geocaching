@@ -1,6 +1,7 @@
 package Projeto_Geocaching;
 
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.RedBlackBST;
 import edu.princeton.cs.algs4.ST;
 import edu.princeton.cs.algs4.SeparateChainingHashST;
 
@@ -13,16 +14,26 @@ public class Main {
         UsersBase base = new UsersBase();
         CacheBase cbase = new CacheBase();
         //readUtilizadores("data/utilizadores.txt",base);
-        readCaches("data/geocaches.txt", cbase);
+        //readCaches("data/geocaches.txt", cbase);
         Premium b1 = new Premium(1, "Daniel", base);
         Basic b2 = new Basic(2, "Miguel", base);
 
         //Basic b2 = new Basic(10,"Miguel", base);
         Point p1 = new Point(5, 2, "Norte");
+        Cache c1 = new Cache("premium", p1, "facil", 0, "geocache1", cbase);
+        Item i1 = new Item(1, "moeda");
+        Item i2 = new Item(2, "caneta");
+        b2.inserirItemUser(i2);
 
-        Item i1 = new Item(1, "tu madre");
-        Item i2 = new Item(2, "tu padre");
-
+        for (Item i : b2.items) {
+            System.out.println(i.getID() + " " + i.getObjeto() + "\n");
+        }
+        b2.visitCache(c1);
+        b2.userInsertItemCache(i2,cbase,"geocache1");
+        System.out.println("////////////");
+        for (Item i : b2.items) {
+            System.out.println(i.getID() + " " + i.getObjeto() + "\n");
+        }
 
         //Cache c1 = new Cache("premium", p1, "facil", 0, "geocache1", cbase);
         // Cache c3 = new Cache ("basic",p1,"dificil",0,"geocache3",cbase);
@@ -31,7 +42,7 @@ public class Main {
         //b2.visitCache(c1);
         //c1.inserir_item(i1, cbase);
     //    c1.print_items();
-        b2.inserirItemUser(i2);
+
 
       //  System.out.println(b2.cachesVisitadasB);
      /*   for (Item i : b1.items) {
@@ -101,5 +112,13 @@ public class Main {
             cbase.getDB_caches().put(c.getNome(), c);
         }
     }
+
+   /* public static void saveTXT(RedBlackBST<Integer, Basic> basics, RedBlackBST<Integer, Admin> admins, RedBlackBST<Integer, Premium> premiums, UsersBase base){
+        try{
+            for (String si : UsersBase base){
+
+            }
+        }
+    }*/
 }
 

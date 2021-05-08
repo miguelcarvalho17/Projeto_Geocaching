@@ -36,6 +36,10 @@ public class Premium extends Basic {
         this.caches.put(c.getNome(), c);
     }
 
+    public void visitCache(Cache c) {
+        this.cachesVisitadasB.add(c);
+    }
+
     public void criar_travelbug(Travel_bugs t, Cache c) {
         if (this.caches.contains(c.getNome())) {
             if (c.travelBugs.contains(t.getID())) {

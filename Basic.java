@@ -34,6 +34,11 @@ public class Basic {
     }
 
     public void visitCache(Cache c) {
+
+        if (c.getTipo().equals("premium")){
+            System.out.println("Utilizador do tipo basic nao pode interagir com caches premium");
+            return;
+        }
         this.cachesVisitadasB.add(c);
     }
 
@@ -135,11 +140,7 @@ public class Basic {
 
             Cache aux = searchCache(nome);
            // Cache aux = this.caches.get(nome);// procurar nas caches globais, nao nas do utilizador
-            if (aux.getTipo().equals("premium")) {
-                System.out.println("Utilizador do tipo basic nao pode interagir com caches premium");
-                return;
-            } // se a cache for do tipo premium um user basic nao pode trocar items.
-
+            if(aux != null){
             if (aux.getItems().get(i.getID()) == null)  {
 
                 System.out.println("Item nao encontrado");
@@ -151,10 +152,25 @@ public class Basic {
            aux.remover_item(i.getID(), cbase); // i = sai da cache
 
             aux.inserir_item(i2, cbase);   // i2 entra
-
-
         }
+    }
 
+    public void userInsertItemCache(Item i, CacheBase cbase, String nome){
+        Cache aux = searchCache(nome);
+
+        if(this.items.contains(i)){
+            aux.inserir_item(i,cbase);
+            this.items.remove(i);
+        }
+    }
+
+    public void userRemoveItemCache(Item i, CacheBase cbase, String nome){
+        Cache aux = searchCache(nome);
+        if(aux.getItems().contains(i.getID())){
+            aux.remover_item(i.getID(),cbase);
+            this.items.add(i);
+        }
+    }
 
     public void inserirItemUser(Item i){
         this.items.add(i);
