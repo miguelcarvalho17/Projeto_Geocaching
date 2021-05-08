@@ -11,7 +11,7 @@ public class Basic {
 
     public String nome;
 
-    public ArrayList<Cache> cachesVisitadasB= new ArrayList<>();
+    public ArrayList<Cache> cachesVisitadasB = new ArrayList<>();
 
     public ArrayList<Item> items = new ArrayList<>();
 
@@ -22,7 +22,7 @@ public class Basic {
     public Basic(int ID, String nome, UsersBase base) {
         this.ID = ID;
         this.nome = nome;
-        base.getBasics().put(ID,this);
+        base.getBasics().put(ID, this);
     }
 
     public Basic(int ID, String nome) {
@@ -30,12 +30,12 @@ public class Basic {
         this.nome = nome;
     }
 
-    public void visitCache(Cache c){
+    public void visitCache(Cache c) {
         this.cachesVisitadasB.add(c);
     }
 
 
-    public void insertCache(Cache c,CacheBase cbase) {
+    public void insertCache(Cache c, CacheBase cbase) {
 
         if (this.caches.contains(c.getNome())) {
             System.out.println(" Esta cache ja existe: " + c);
@@ -45,7 +45,7 @@ public class Basic {
             return;
         }
         this.caches.put(c.getNome(), c);
-        cbase.getDB_caches().put(c.getNome(),c);
+        cbase.getDB_caches().put(c.getNome(), c);
     }
 
 
@@ -92,25 +92,25 @@ public class Basic {
         return null;
     }
 
-    public void find_visitedCaches(){
-      System.out.println(this.nome+" visitou:");
-      for (Cache c : this.cachesVisitadasB){
-        System.out.println(c.toString());
-      }
+    public void find_visitedCaches() {
+        System.out.println(this.nome + " visitou:");
+        for (Cache c : this.cachesVisitadasB) {
+            System.out.println(c.toString());
+        }
     }
 
-  public void find_visitedCaches_regiao(String regiao){
-    System.out.println(this.nome+" visitou:");
-    for (Cache c : this.cachesVisitadasB){
-      if (c.getCoordenadas().regiao.equals(regiao)){
-        System.out.println(c.toString());
-      }
+    public void find_visitedCaches_regiao(String regiao) {
+        System.out.println(this.nome + " visitou:");
+        for (Cache c : this.cachesVisitadasB) {
+            if (c.getCoordenadas().regiao.equals(regiao)) {
+                System.out.println(c.toString());
+            }
+        }
     }
-  }
 
-    public void FindNonVisitedCaches(CacheBase cbase){
-        System.out.println(this.nome+" nao visitou:");
-        for (String si : cbase.getDB_caches().keys()){
+    public void FindNonVisitedCaches(CacheBase cbase) {
+        System.out.println(this.nome + " nao visitou:");
+        for (String si : cbase.getDB_caches().keys()) {
             if (!this.cachesVisitadasB.contains(cbase.getDB_caches().get(si))) {
                 System.out.println(cbase.getDB_caches().get(si).toString());
             }
@@ -129,20 +129,39 @@ public class Basic {
     }
 
     public void trocarItem(Item i, String nome, Item i2, CacheBase cbase) {
-        Cache c = this.searchCache(nome); // procurar nas caches globais, nao nas do utilizador
 
-        if (c.getItems().get(i.getID()) == null) {
+            Cache aux = searchCache(nome);
+           // Cache aux = this.caches.get(nome);// procurar nas caches globais, nao nas do utilizador
+            if (aux.getTipo().equals("premium")) {
+                System.out.println("Utilizador do tipo basic nao pode interagir com caches premium");
+                return;
+            } // se a cache for do tipo premium um user basic nao pode trocar items.
 
-            System.out.println("Item nao encontrado");
-            return;
+            if (aux.getItems().get(i.getID()) == null)  {
+
+                System.out.println("Item nao encontrado");
+                return;
+            }
+
+            this.items.set(this.items.indexOf(i2),i);
+
+           aux.remover_item(i.getID(), cbase); // i = sai da cache
+
+            aux.inserir_item(i2, cbase);   // i2 entra
+
+
         }
-        c.remover_item(i.getID(), cbase); // i = sai da cache
-        c.inserir_item(i2, cbase);   // i2 entra
-        this.items.add(i); // guarda o item que o user removeu no seu arraylist de items
+
+
+    public void inserirItemUser(Item i){
+        this.items.add(i);
     }
+
 
     @Override
     public String toString() {
         return "User Basic->" + "ID=" + ID + "; nome=" + nome;
     }
+
+
 }
