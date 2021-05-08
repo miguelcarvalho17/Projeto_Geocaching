@@ -5,6 +5,8 @@ import edu.princeton.cs.algs4.RedBlackBST;
 import edu.princeton.cs.algs4.ST;
 import edu.princeton.cs.algs4.SeparateChainingHashST;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -17,23 +19,24 @@ public class Main {
         //readCaches("data/geocaches.txt", cbase);
         Premium b1 = new Premium(1, "Daniel", base);
         Basic b2 = new Basic(2, "Miguel", base);
-
+        Admin a1 = new Admin(3,"Joao", base);
+        saveUsersTXT(base,"data/usersOUT.txt");
         //Basic b2 = new Basic(10,"Miguel", base);
         Point p1 = new Point(5, 2, "Norte");
         Cache c1 = new Cache("premium", p1, "facil", 0, "geocache1", cbase);
-        Item i1 = new Item(1, "moeda");
-        Item i2 = new Item(2, "caneta");
-        b2.inserirItemUser(i2);
+      //  Item i1 = new Item(1, "moeda");
+      //  Item i2 = new Item(2, "caneta");
+      //  b2.inserirItemUser(i2);
 
-        for (Item i : b2.items) {
+    /*    for (Item i : b2.items) {
             System.out.println(i.getID() + " " + i.getObjeto() + "\n");
         }
         b2.visitCache(c1);
-        b2.userInsertItemCache(i2,cbase,"geocache1");
+      //  b2.userInsertItemCache(i2,cbase,"geocache1");
         System.out.println("////////////");
         for (Item i : b2.items) {
             System.out.println(i.getID() + " " + i.getObjeto() + "\n");
-        }
+        }*/
 
         //Cache c1 = new Cache("premium", p1, "facil", 0, "geocache1", cbase);
         // Cache c3 = new Cache ("basic",p1,"dificil",0,"geocache3",cbase);
@@ -53,7 +56,7 @@ public class Main {
        //b1.trocarItem(i1, "geocache1", i2, cbase);
 
         //c1.print_items();
-        cbase.printDBcaches();
+       // cbase.printDBcaches();
 
     }
 
@@ -113,12 +116,50 @@ public class Main {
         }
     }
 
-   /* public static void saveTXT(RedBlackBST<Integer, Basic> basics, RedBlackBST<Integer, Admin> admins, RedBlackBST<Integer, Premium> premiums, UsersBase base){
+    public static void saveUsersTXT(UsersBase base, String utxt){
         try{
-            for (String si : UsersBase base){
+            if(!base.getBasics().isEmpty()){
+                BufferedWriter writer = new BufferedWriter(new FileWriter(utxt, true));
+            for (Integer si :  base.getBasics().keys()){
 
+                writer.write(String.valueOf((base.getBasics().get(si).ID)));
+                writer.write(", ");
+                writer.write(base.getBasics().get(si).nome);
+                writer.write(", ");
+                writer.write("basic");
+                }
+                writer.newLine();
+                writer.close();
             }
+            if(!base.getPremiums().isEmpty()){
+                BufferedWriter writer = new BufferedWriter(new FileWriter(utxt, true));
+                for (Integer si :  base.getPremiums().keys()){
+
+                    writer.write(String.valueOf(base.getPremiums().get(si).ID));
+                    writer.write(", ");
+                    writer.write(base.getPremiums().get(si).nome);
+                    writer.write(", ");
+                    writer.write("premium");
+                }
+                writer.newLine();
+                writer.close();
+            }
+            if(!base.getAdmins().isEmpty()){
+                BufferedWriter writer = new BufferedWriter(new FileWriter(utxt, true));
+                for (Integer si :  base.getAdmins().keys()){
+
+                    writer.write(String.valueOf(base.getAdmins().get(si).ID));
+                    writer.write(", ");
+                    writer.write(base.getAdmins().get(si).nome);
+                    writer.write(", ");
+                    writer.write("admin");
+                }
+                writer.newLine();
+                writer.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }*/
+    }
 }
 
