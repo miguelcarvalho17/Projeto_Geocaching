@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
     public class CacheBase {
 
+        private static String PATH2 = "data/removedcache.txt";
+
    SeparateChainingHashST<String, Cache> DB_caches = new SeparateChainingHashST<>();
 
     public CacheBase() {
@@ -25,6 +27,17 @@ import java.util.ArrayList;
             this.DB_caches = DB_caches;
         }
 
+        public void removeCache(String nome){
+            for (String i : this.getDB_caches().keys()){
+                if (i.equals(nome)){
+                    Cache c = this.getDB_caches().get(i);
+                    c.WriteCacheToFile(c,PATH2);
+                    this.getDB_caches().delete(nome);
+                    return;
+                }
+            }
+
+        }
 
         @Override
         public String toString() {

@@ -28,8 +28,9 @@ public class Main {
         Cache c2 = new Cache("basic", p2, "medio", 0, "geocache3", cbase);
 
         Item i2 = new Item(2, "caneta");
-        b1.inserirItemUser(i2);
-        base.removeAUser(1);
+        cbase.removeCache("geocache1");
+        //b1.inserirItemUser(i2);
+        //base.removeAUser(1);
         //base.printUsers();
 
 
@@ -79,7 +80,7 @@ public class Main {
        //b1.trocarItem(i1, "geocache1", i2, cbase);
 
         //c1.print_items();
-       //cbase.printDBcaches();
+       cbase.printDBcaches();
 
     }
 

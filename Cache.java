@@ -3,6 +3,8 @@ package Projeto_Geocaching;
 import edu.princeton.cs.algs4.RedBlackBST;
 
 import javax.xml.crypto.Data;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Random;
@@ -114,6 +116,28 @@ public class Cache {
 
   public void setLogs(ArrayList<Log> logs) {
     this.logs = logs;
+  }
+
+  public void WriteCacheToFile(Cache c, String path){
+    try {
+      BufferedWriter writer = new BufferedWriter(new FileWriter(path, true)); //append true
+      writer.write(c.getNome());
+      writer.write(", ");
+      writer.write(c.getTipo());
+      writer.write(", ");
+      writer.write(String.valueOf(c.getCoordenadas().latitude));
+      writer.write(", ");
+      writer.write(String.valueOf(c.getCoordenadas().longitude));
+      writer.write(", ");
+      writer.write(c.getDificuldade());
+      writer.write(", ");
+      writer.write(String.valueOf(c.getnItems()));
+      writer.write(", ");
+      writer.newLine();
+      writer.close();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   public void inserir_item(Item i, CacheBase cbase) {

@@ -203,6 +203,10 @@ public class Basic {
         this.items.add(i);
     }
 
+
+
+
+
     public void WriteUserToFile(Basic b, String path){
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(path, true)); //append true
