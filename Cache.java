@@ -2,7 +2,10 @@ package Projeto_Geocaching;
 
 import edu.princeton.cs.algs4.RedBlackBST;
 
+import javax.xml.crypto.Data;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Cache {
 
@@ -14,20 +17,13 @@ public class Cache {
 
   private String dificuldade;
 
-  private ArrayList<Log> historico;
+  private ArrayList<Log> logs;
 
   private int nItems;
 
   RedBlackBST<Integer, Item> items = new RedBlackBST<>();
   RedBlackBST<Integer, Travel_bugs> travelBugs = new RedBlackBST<>();
 
-  public Cache(String tipo, Point coordenadas, String dificuldade, String nome) {
-    this.tipo = tipo;
-    this.coordenadas = coordenadas;
-    this.dificuldade = dificuldade;
-    this.nItems = 0;
-    this.nome = nome;
-  }
 
   public RedBlackBST<Integer, Item> getItems() {
     return items;
@@ -35,6 +31,14 @@ public class Cache {
 
   public void setItems(RedBlackBST<Integer, Item> items) {
     this.items = items;
+  }
+
+  public Cache(String tipo, Point coordenadas, String dificuldade, String nome) {
+    this.tipo = tipo;
+    this.coordenadas = coordenadas;
+    this.dificuldade = dificuldade;
+    this.nItems = 0;
+    this.nome = nome;
   }
 
   public Cache(String tipo, Point coordenadas, String dificuldade, int nitens, String nome) {
@@ -45,12 +49,13 @@ public class Cache {
     this.nome = nome;
   }
 
-  public Cache(String tipo, Point coordenadas, String dificuldade, int nitens, String nome, CacheBase cbase) {
+  public Cache(String tipo, Point coordenadas, String dificuldade, int nitens, String nome, CacheBase cbase, ArrayList<Log> logs) {
     this.tipo = tipo;
     this.coordenadas = coordenadas;
     this.dificuldade = dificuldade;
     this.nItems = nitens;
     this.nome = nome;
+    this.logs = logs;
     cbase.getDB_caches().put(this.getNome(),this);
   }
 
@@ -94,6 +99,14 @@ public class Cache {
     this.nItems = nItems;
   }
 
+  public ArrayList<Log> getLogs() {
+    return logs;
+  }
+
+  public void setLogs(ArrayList<Log> logs) {
+    this.logs = logs;
+  }
+
   public void inserir_item(Item i, CacheBase cbase) {
     if (this.items.contains(i.getID())) {
       System.out.println(" Este item ja existe: " + i);
@@ -102,9 +115,12 @@ public class Cache {
     cbase.getDB_caches().delete(this.getNome());
 
     this.items.put(i.getID(), i);
-    //cbase.getDB_caches().get(this.getNome()).inserir_item(i,cbase);
+    LocalDateTime d = LocalDateTime.now();
+    Random rand = new Random();
+    int rand_int1 = rand.nextInt(1000);
+    Log l = new Log("Item inserido na cache!",d, rand_int1);
+    this.logs.add(l);
     cbase.getDB_caches().put(this.getNome(),this);
-    //System.out.println("Item inserido na " + this.getNome());
     this.nItems++;
   }
 
@@ -114,6 +130,11 @@ public class Cache {
       Item i = this.items.get(id);
       System.out.println("Item removido da " + this.getNome() + ": " +i);
       this.items.delete(id);
+      LocalDateTime d = LocalDateTime.now();
+      Random rand = new Random();
+      int rand_int1 = rand.nextInt(1000);
+      Log l = new Log("Item removido da cache!",d, rand_int1);
+      this.logs.add(l);
       cbase.DB_caches.get(this.getNome()).remover_item(id, cbase);
       this.nItems--;
       return i;
@@ -128,6 +149,11 @@ public class Cache {
     }
     Item i = this.items.get(id);
     i.setObjeto(objeto);
+    LocalDateTime d = LocalDateTime.now();
+    Random rand = new Random();
+    int rand_int1 = rand.nextInt(1000);
+    Log l = new Log("Item editado da cache!",d, rand_int1);
+    this.logs.add(l);
     System.out.println("Item editado com sucesso"  + this.getNome());
   }
 
@@ -143,6 +169,12 @@ public class Cache {
         System.out.println("TravelBugs existentes na cache: " + this.travelBugs.get(se));
       }
       }
+  }
+
+  public void print_logs(){
+   for (int i = 0; i < this.logs.size();i++){
+      System.out.println(this.logs.get(i));
+    }
   }
 
   public void findUsersVisitedCache(UsersBase base){
@@ -174,12 +206,12 @@ public class Cache {
   public String toString() {
 
     this.print_items();
+    this.print_logs();
     return "Cache{" +
             "nome='" + nome + '\'' +
             ", tipo='" + tipo + '\'' +
             ", coordenadas=" + coordenadas +
             ", dificuldade='" + dificuldade + '\'' +
-            ", historico=" + historico +
             ", nItems=" + nItems +
             '}';
   }

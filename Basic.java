@@ -3,7 +3,9 @@ package Projeto_Geocaching;
 import edu.princeton.cs.algs4.RedBlackBST;
 import edu.princeton.cs.algs4.SeparateChainingHashST;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Basic {
 
@@ -15,7 +17,7 @@ public class Basic {
 
     public ArrayList<Item> items = new ArrayList<>();
 
-    public ArrayList<Cache> cachesEscondidasB = new ArrayList<>();
+    //public ArrayList<Cache> cachesEscondidasB = new ArrayList<>();
 
     SeparateChainingHashST<String, Cache> caches = new SeparateChainingHashST<>();
 
@@ -34,11 +36,16 @@ public class Basic {
     }
 
     public void visitCache(Cache c) {
-
         if (c.getTipo().equals("premium")){
             System.out.println("Utilizador do tipo basic nao pode interagir com caches premium");
             return;
         }
+        LocalDateTime d = LocalDateTime.now();
+        Random rand = new Random();
+        int rand_int1 = rand.nextInt(1000);
+        String acontecimento = "Cache visitada por " + this.nome;
+        Log l = new Log(acontecimento,d, rand_int1);
+        c.getLogs().add(l);
         this.cachesVisitadasB.add(c);
     }
 

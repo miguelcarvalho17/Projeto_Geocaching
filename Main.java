@@ -15,15 +15,22 @@ public class Main {
 
         UsersBase base = new UsersBase();
         CacheBase cbase = new CacheBase();
+        ArrayList<Log> l = new ArrayList<>();
         //readUtilizadores("data/utilizadores.txt",base);
         //readCaches("data/geocaches.txt", cbase);
         Premium b1 = new Premium(1, "Daniel", base);
         Basic b2 = new Basic(2, "Miguel", base);
         Admin a1 = new Admin(3,"Joao", base);
-        saveUsersTXT(base,"data/usersOUT.txt");
+        //saveUsersTXT(base,"data/usersOUT.txt");
         //Basic b2 = new Basic(10,"Miguel", base);
         Point p1 = new Point(5, 2, "Norte");
-        Cache c1 = new Cache("premium", p1, "facil", 0, "geocache1", cbase);
+        Cache c1 = new Cache("premium", p1, "facil", 0, "geocache1", cbase, l);
+
+        Item i1 = new Item(1, "moeda");
+        b1.visitCache(c1);
+        c1.inserir_item(i1, cbase);
+        //c1.remover_item(1, cbase);
+        cbase.printDBcaches();
       //  Item i1 = new Item(1, "moeda");
       //  Item i2 = new Item(2, "caneta");
       //  b2.inserirItemUser(i2);
