@@ -13,18 +13,21 @@ import java.util.ArrayList;
     public CacheBase() {
     }
 
-        public void printDBcaches(){
-          for (String c : this.getDB_caches().keys()){
-              System.out.println(this.getDB_caches().get(c)+ "\n");
-          }
-        }
-
         public SeparateChainingHashST<String, Cache> getDB_caches() {
             return DB_caches;
         }
 
         public void setDB_caches(SeparateChainingHashST<String, Cache> DB_caches) {
             this.DB_caches = DB_caches;
+        }
+
+        /**
+         * Permite printar todas as caches existentes na CacheBase
+         */
+        public void printDBcaches(){
+            for (String c : this.getDB_caches().keys()){
+                System.out.println(this.getDB_caches().get(c)+ "\n");
+            }
         }
 
         /**

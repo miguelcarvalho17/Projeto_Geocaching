@@ -1,14 +1,10 @@
 package Projeto_Geocaching;
 
 import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.RedBlackBST;
-import edu.princeton.cs.algs4.ST;
-import edu.princeton.cs.algs4.SeparateChainingHashST;
+
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class Main {
 
@@ -16,6 +12,7 @@ public class Main {
         UsersBase base = new UsersBase();
         CacheBase cbase = new CacheBase();
 
+        //Requisito 6
         readUtilizadores("data/utilizadores.txt",base);
         readCaches("data/geocaches.txt", cbase);
 
@@ -23,57 +20,15 @@ public class Main {
 
         //requisito5(cbase, base);
 
+        //Requisito 7
         //saveUsersTXT(base,"data/usersOUT.txt");
-
         //saveCachesTXT(cbase,"data/geocachesOUT.txt");
 
-        //Travel_bugs i1 = new Travel_bugs(1, "moeda");
-        //Item i2 = new Item(2, "caneta");
-        //b1.visitCache(c1);
-        //c1.inserir_item(i1, cbase);
-        //b1.inserirItemUser(i2);
-        //b1.userInsertItemCache(i2,cbase,"geocache1");
-        //b1.userRemoveItemCache(i2,cbase,"geocache1");
-        //b1.trocarItem(i1,"geocache1", i2, cbase, c2);
-
-        //b1.visitCache(c2);
-        //b1.userInsertItemCache(i1,cbase, "geocache3");
-
-        //c1.remover_item(1, cbase);
-        //cbase.printDBcaches();
-      //  Item i1 = new Item(1, "moeda");
-      //  Item i2 = new Item(2, "caneta");
-      //  b2.inserirItemUser(i2);
-
-    /*    for (Item i : b2.items) {
-            System.out.println(i.getID() + " " + i.getObjeto() + "\n");
-        }
-        b2.visitCache(c1);
-      //  b2.userInsertItemCache(i2,cbase,"geocache1");
-        System.out.println("////////////");
-        for (Item i : b2.items) {
-            System.out.println(i.getID() + " " + i.getObjeto() + "\n");
-        }*/
-
-        //Cache c1 = new Cache("premium", p1, "facil", 0, "geocache1", cbase);
-        // Cache c3 = new Cache ("basic",p1,"dificil",0,"geocache3",cbase);
-        //b1.insertCache(c1, cbase);
-        //b1.visitCache(c1);
-        //b2.visitCache(c1);
-        //c1.inserir_item(i1, cbase);
-    //    c1.print_items();
+        //Requisito 8
+        //requisito8(cbase, base);
 
 
-      //  System.out.println(b2.cachesVisitadasB);
-     /*   for (Item i : b1.items) {
-            System.out.println(i.getID() + " " + i.getObjeto() + "\n");
-        }
-       */
 
-       //b1.trocarItem(i1, "geocache1", i2, cbase);
-
-        //c1.print_items();
-        //cbase.printDBcaches();
     }
 
     public static void requisito3(CacheBase cbase, UsersBase base) {
@@ -101,9 +56,15 @@ public class Main {
     //Remoçao de um item num utilizador
         b1.items.remove(i3);
 
+    //Utilizador remove Item da Cache
+        b1.userRemoveItemCache(i3,cbase,"geocache1");
+
         //Inserçao de uma cache
         Point p2 = new Point(-6.345875, 5.23455, "Madeira");
         Cache c2 = new Cache("basic",p2, "dificil", 0, "geocache100", cbase);
+
+        //Utilizador insere uma nova cache
+        b1.insertCache(c2, cbase);
 
         //Remoçao de uma cache
         cbase.DB_caches.delete(c2.getNome());
@@ -117,11 +78,20 @@ public class Main {
         Item i1 = new Item(20, "luvas");
         cbase.getDB_caches().get("geocache1").inserir_item(i1, cbase);
 
+        //Printar items dentro de uma cache
+        c.print_items();
+
         //Remover um item numa cache
         c.items.delete(i1.getID());
 
         //Editar item numa cache
         c.editar_item(i1.getID(), "bolo");
+
+        //Utilizador insere item numa cache
+        a1.userInsertItemCache(i1,cbase,"geocache1");
+
+        //Troca de items realizado numa cache
+        b1.trocarItem(i1, "geocache1", i3, cbase, c);
 
         //Inserçao de um travel bug
         Travel_bugs t1 = new Travel_bugs(1, "moeda");
@@ -141,6 +111,44 @@ public class Main {
         //Remoçao de um user, guardando a informaçao dele, items, nome, ID
         base.removeAUser(7);
         //base.printUsers();
+    }
+
+    public static void requisito8(CacheBase cbase, UsersBase base){
+        //  a)Todas as caches visitadas por um utilizador. Global e por região;
+        //Global
+        Admin a = base.getAdmins().get(3);
+        Basic b = base.getBasics().get(1);
+        Point p2 = new Point(-6.345875, 5.23455, "madeira");
+        Cache c2 = new Cache("basic",p2, "dificil", 0, "geocache100", cbase);
+        Point p3 = new Point(-5.345875, 10.23455, "norte");
+        Cache c3 = new Cache("basic",p3, "dificil", 0, "geocache50", cbase);
+        a.visitCache(c2, cbase);
+        a.visitCache(c3, cbase);
+        //a.find_visitedCaches();
+
+        //Regiao
+        //a.find_visitedCaches_regiao("madeira");
+
+        //  b)Todas as caches não visitadas por um utilizador. Global e por região;
+        //Global
+        //a.FindNonVisitedCaches(cbase);
+
+        //Regiao
+        //a.FindNonVisitedCaches_Regiao(cbase, "norte");
+
+        //c) Todos os utilizadores que já visitaram uma dada cache;
+        //b.visitCache(c2, cbase);
+        //c2.findUsersVisitedCache(base);
+
+        Cache c4 = new Cache("premium",p3, "dificil", 0, "geocache75", cbase);
+        Item i2 = new Item(6, "caneta");
+        c4.inserir_item(i2, cbase);
+
+        Cache c5 = new Cache("premium",p3, "dificil", 0, "geocache90", cbase);
+
+        //d) Todas as caches premium que têm pelo menos um objecto;
+        a.findCachesPremiumWithObjects(cbase);
+
     }
 
     /**

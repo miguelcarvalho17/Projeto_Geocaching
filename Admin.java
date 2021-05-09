@@ -15,6 +15,15 @@ public class Admin extends Premium {
   }
 
 
+  /**
+   * Permite ao admin editar um utilizador
+   * @param ob
+   * @param id
+   * @param base
+   * @param tipo
+   * @param nome
+   * @return
+   */
   public Object editar_utilizador(Object ob ,int id, UsersBase base, String tipo, String nome) {
     for (Integer i : base.getBasics().keys()){
       if (base.getBasics().get(i).ID == id){
@@ -45,6 +54,11 @@ public class Admin extends Premium {
     return ob;
   }
 
+  /**
+   * Permite ao admin remover um utilizador
+   * @param id
+   * @param base
+   */
   public void remover_utilizador(int id, UsersBase base) {
     for (int i : base.getBasics().keys()) {
 
@@ -62,6 +76,12 @@ public class Admin extends Premium {
     }
   }
 
+
+  /**
+   * Permite escrever para ficheiro um admin removido
+   * @param b
+   * @param path
+   */
   public void WriteUserToFile(Admin b, String path){
     try {
       BufferedWriter writer = new BufferedWriter(new FileWriter(path, true)); //append true
