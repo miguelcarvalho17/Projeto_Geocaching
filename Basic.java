@@ -36,18 +36,22 @@ public class Basic {
     public Basic(){
     }
 
-    public void visitCache(Cache c) {
+    public void visitCache(Cache c, CacheBase cbase) {
         if (c.getTipo().equals("premium")){
             System.out.println("Utilizador do tipo basic nao pode interagir com caches premium");
             return;
         }
-        LocalDateTime d = LocalDateTime.now();
-        Random rand = new Random();
-        int rand_int1 = rand.nextInt(1000);
-        String acontecimento = "Cache visitada por " + this.nome;
-        Log l = new Log(acontecimento,d, rand_int1);
-        c.getLogs().add(l);
-        this.cachesVisitadasB.add(c);
+        if (cbase.getDB_caches().contains(c.getNome())) {
+            LocalDateTime d = LocalDateTime.now();
+            Random rand = new Random();
+            int rand_int1 = rand.nextInt(1000);
+            String acontecimento = "Cache visitada por " + this.nome;
+            Log l = new Log(acontecimento, d, rand_int1);
+            c.getLogs().add(l);
+            this.cachesVisitadasB.add(c);
+        }else{
+            System.out.println("Cache inexistente!");
+        }
     }
 
 

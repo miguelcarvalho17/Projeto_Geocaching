@@ -29,8 +29,15 @@ public class Main {
 
 
         Item i2 = new Item(2, "caneta");
+        Item i3 = new Item(3, "bola");
+        Item i4 = new Item(4, "limao");
         c1.inserir_item(i2, cbase);
-        cbase.removeCache("geocache1");
+        c1.inserir_item(i3, cbase);
+        c2.inserir_item(i4, cbase);
+        saveCachesTXT(cbase,"data/geocachesOUT.txt");
+        //cbase.removeCache("geocache1");
+        b1.visitCache(c1, cbase);
+
         //b1.inserirItemUser(i2);
         //base.removeAUser(1);
         //base.printUsers();
@@ -183,6 +190,39 @@ public class Main {
                 writer.close();
             }
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveCachesTXT(CacheBase cbase, String ctxt){
+        try {
+            if (!cbase.getDB_caches().isEmpty()){
+                BufferedWriter writer = new BufferedWriter(new FileWriter(ctxt, true));
+                for (String si : cbase.getDB_caches().keys()){
+                    writer.write(cbase.DB_caches.get(si).getNome());
+                    writer.write(", ");
+                    writer.write(cbase.DB_caches.get(si).getTipo());
+                    writer.write(", ");
+                    writer.write(String.valueOf(cbase.DB_caches.get(si).getCoordenadas().latitude));
+                    writer.write(", ");
+                    writer.write(String.valueOf(cbase.DB_caches.get(si).getCoordenadas().longitude));
+                    writer.write(", ");
+                    writer.write(cbase.DB_caches.get(si).getCoordenadas().regiao);
+                    writer.write(", ");
+                    writer.write(cbase.DB_caches.get(si).getDificuldade());
+                    writer.write(", ");
+                    writer.write(String.valueOf(cbase.DB_caches.get(si).getnItems()));
+
+                    for (Integer i : cbase.DB_caches.get(si).items.keys()){
+                        writer.write(", ");
+                        writer.write(cbase.DB_caches.get(si).items.get(i).getObjeto());
+                    }
+                    writer.newLine();
+                }
+                writer.close();
+            }
+
+        } catch (Exception e){
             e.printStackTrace();
         }
     }
