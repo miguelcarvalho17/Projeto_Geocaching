@@ -16,6 +16,49 @@ public class Main {
         readUtilizadores("data/utilizadores.txt",base);
         readCaches("data/geocaches.txt", cbase);
 
+        //Tarefa Stor
+        //Manuel
+        Basic manuel = base.getBasics().get(1);
+        Item i1 = new Item(2, "bolo");
+        manuel.inserirItemUser(i1);
+        Cache c1 = cbase.DB_caches.get("geocache1");
+        Cache c2 = cbase.DB_caches.get("geocache2");
+        Travel_bugs t = new Travel_bugs(19, "capa");
+        c2.inserir_item(t, cbase);
+        Cache c6 = cbase.DB_caches.get("geocache6");
+        Cache c8 = cbase.DB_caches.get("geocache8");
+        Cache c13 = cbase.DB_caches.get("geocache13");
+        Cache c16 = cbase.DB_caches.get("geocache16");
+        Cache c17 = cbase.DB_caches.get("geocache17");
+        manuel.visitCache(c1, cbase);
+        manuel.visitCache(c2, cbase);
+        manuel.trocarItem(t, "geocache2",i1,cbase , c17);
+        manuel.visitCache(c6, cbase);
+        manuel.visitCache(c8, cbase);
+        manuel.visitCache(c13, cbase);
+        manuel.visitCache(c16, cbase);
+        manuel.visitCache(c17, cbase);
+        manuel.userInsertItemCache(t, cbase, "geocache17");
+
+        System.out.println("----------------------//-------------------------");
+
+        //Pedro
+        Basic pedro = base.getBasics().get(2);
+        Cache c18 = cbase.DB_caches.get("geocache18");
+        pedro.visitCache(c18, cbase);
+        pedro.visitCache(c13, cbase);
+        pedro.visitCache(c8, cbase);
+        Item capa = cbase.DB_caches.get("geocache8").items.get(13);
+        pedro.userRemoveItemCache(capa, cbase, "geocache8");
+
+
+
+
+
+
+        //base.printUsers();
+        //cbase.printDBcaches();
+
         //requisito3(cbase, base);
 
         //requisito5(cbase, base);
