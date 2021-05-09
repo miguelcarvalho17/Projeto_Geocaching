@@ -118,6 +118,11 @@ public class Cache {
     this.logs = logs;
   }
 
+  /**
+   * Escreve uma cache removida do sistema para um ficheiro txt.
+   * @param c
+   * @param path
+   */
   public void WriteCacheToFile(Cache c, String path){
     try {
       BufferedWriter writer = new BufferedWriter(new FileWriter(path, true)); //append true
@@ -143,6 +148,11 @@ public class Cache {
     }
   }
 
+  /**
+   * Permite inserir um item dentro de uma cache.
+   * @param i
+   * @param cbase
+   */
   public void inserir_item(Item i, CacheBase cbase) {
     if (this.items.contains(i.getID())) {
       System.out.println(" Este item ja existe: " + i);
@@ -161,6 +171,12 @@ public class Cache {
     this.nItems++;
   }
 
+  /**
+   * Permite remover um item de uma cache.
+   * @param id
+   * @param cbase
+   * @return
+   */
   public Item remover_item(int id, CacheBase cbase) {
 
     if (this.items.contains(id)) {
@@ -180,6 +196,11 @@ public class Cache {
     return null;
   }
 
+  /**
+   * Permite editar um item de uma cache.
+   * @param id
+   * @param objeto
+   */
   public void editar_item(int id, String objeto) {
     if (!this.items.contains(id)) {
       System.out.println("Impossivel editar,item inexistente!");
@@ -195,6 +216,9 @@ public class Cache {
     System.out.println("Item editado com sucesso"  + this.getNome());
   }
 
+  /**
+   * Printa os items existentes numa cache.
+   */
   public void print_items() {
       if (this.items.isEmpty()) {
         System.out.println("Esta cache nao tem items");
@@ -204,12 +228,19 @@ public class Cache {
       }
   }
 
+  /**
+   * Printa os logs de uma cache.
+   */
   public void print_logs(){
    for (int i = 0; i < this.logs.size();i++){
       System.out.println(this.logs.get(i));
     }
   }
 
+  /**
+   * Encontra os utilizadores que visitaram uma dada cache.
+   * @param base
+   */
   public void findUsersVisitedCache(UsersBase base){
     int i = 0;
     for (Integer si : base.getBasics().keys()){

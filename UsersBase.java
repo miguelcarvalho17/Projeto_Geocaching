@@ -56,6 +56,10 @@ public class UsersBase {
         }
     }
 
+    /**
+     * Permite remover um user e escreve-lo para um ficheiro txt.
+     * @param id
+     */
     public void removeAUser(Integer id){
         for (Integer si : this.getBasics().keys()){
             if (this.getBasics().get(si).ID == id){

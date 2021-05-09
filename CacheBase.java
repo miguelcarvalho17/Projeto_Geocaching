@@ -27,6 +27,10 @@ import java.util.ArrayList;
             this.DB_caches = DB_caches;
         }
 
+        /**
+         * Remove a cache da cachebase e escreve-a para um ficheiro txt.
+         * @param nome
+         */
         public void removeCache(String nome){
             for (String i : this.getDB_caches().keys()){
                 if (i.equals(nome)){

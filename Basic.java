@@ -36,6 +36,11 @@ public class Basic {
     public Basic(){
     }
 
+    /**
+     * Permite um user basico visitar uma cache basica.
+     * @param c
+     * @param cbase
+     */
     public void visitCache(Cache c, CacheBase cbase) {
         if (c.getTipo().equals("premium")){
             System.out.println("Utilizador do tipo basic nao pode interagir com caches premium");
@@ -54,7 +59,11 @@ public class Basic {
         }
     }
 
-
+    /**
+     * Permite um user basico inserir apenas caches basicas.
+     * @param c
+     * @param cbase
+     */
     public void insertCache(Cache c, CacheBase cbase) {
 
         if (this.caches.contains(c.getNome())) {
@@ -68,6 +77,11 @@ public class Basic {
         cbase.getDB_caches().put(c.getNome(), c);
     }
 
+    /**
+     * Permite remover caches basicas.
+     * @param nome
+     * @param cbase
+     */
 
     public void removerCache(String nome, CacheBase cbase) {
         Cache c = this.caches.get(nome);
@@ -80,6 +94,14 @@ public class Basic {
         System.out.println("Impossivel remover cache!");
     }
 
+
+    /**
+     * Permite editar uma cache basica.
+     * @param nome
+     * @param coordenadas
+     * @param dificuldade
+     * @param cbase
+     */
     public void editarCache(String nome,Point coordenadas, String dificuldade,CacheBase cbase) {
         Cache c = this.caches.get(nome);
         if (c != null) {
@@ -92,6 +114,9 @@ public class Basic {
         System.out.println("Impossivel editar uma cache que nao existe!");
     }
 
+    /**
+     * Printa as caches de um user.
+     */
     public void printCaches() {
         if (this.caches.isEmpty()) {
             System.out.println("Nao existem caches");
@@ -103,6 +128,11 @@ public class Basic {
         }
     }
 
+    /**
+     * Procura uma cache no arraylist de caches visitadas pelo user e retorna-a.
+     * @param nome
+     * @return
+     */
     public Cache searchCache(String nome) {
 
         for (Cache c : this.cachesVisitadasB) {
@@ -113,6 +143,9 @@ public class Basic {
         return null;
     }
 
+    /**
+     * Encontra todas caches visitadas por um user(global).
+     */
     public void find_visitedCaches() {
         System.out.println(this.nome + " visitou:");
         for (Cache c : this.cachesVisitadasB) {
@@ -120,6 +153,10 @@ public class Basic {
         }
     }
 
+    /**
+     * Encontra todas caches visitadas por um user(regional).
+     * @param regiao
+     */
     public void find_visitedCaches_regiao(String regiao) {
         System.out.println(this.nome + " visitou:");
         for (Cache c : this.cachesVisitadasB) {
@@ -129,6 +166,10 @@ public class Basic {
         }
     }
 
+    /**
+     * Encontra as caches que nao foram visitadas por um user.
+     * @param cbase
+     */
     public void FindNonVisitedCaches(CacheBase cbase) {
         System.out.println(this.nome + " nao visitou:");
         for (String si : cbase.getDB_caches().keys()) {
@@ -138,6 +179,11 @@ public class Basic {
         }
     }
 
+    /**
+     * Encontra as caches que nao foram visitadas por um user(regional).
+     * @param cbase
+     * @param regiao
+     */
     public void FindNonVisitedCaches_Regiao(CacheBase cbase, String regiao) {
         System.out.println(this.nome + " nao visitou:");
         for (String si : cbase.getDB_caches().keys()) {
@@ -149,6 +195,14 @@ public class Basic {
         }
     }
 
+    /**
+     * Permite um utilizador trocar items numa cache.
+     * @param i
+     * @param nome
+     * @param i2
+     * @param cbase
+     * @param c2missao
+     */
     public void trocarItem(Item i, String nome, Item i2, CacheBase cbase, Cache c2missao) {
 
             Cache aux = searchCache(nome);
@@ -181,6 +235,12 @@ public class Basic {
         }
     }
 
+    /**
+     * Permite um user inserir um item dentro de uma cache.
+     * @param i
+     * @param cbase
+     * @param nome
+     */
     public void userInsertItemCache(Item i, CacheBase cbase, String nome){
         Cache aux = searchCache(nome);
 
@@ -195,6 +255,12 @@ public class Basic {
         }
     }
 
+    /**
+     * Permite um user remover um item dentro de uma cache.
+     * @param i
+     * @param cbase
+     * @param nome
+     */
     public void userRemoveItemCache(Item i, CacheBase cbase, String nome){
         Cache aux = searchCache(nome);
         if(aux.getItems().contains(i.getID())){
@@ -203,14 +269,19 @@ public class Basic {
         }
     }
 
+    /**
+     * Permite adicionar um item ao arraylist de items do user.
+     * @param i
+     */
     public void inserirItemUser(Item i){
         this.items.add(i);
     }
 
-
-
-
-
+    /**
+     * Escreve um user removido para um ficheiro txt.
+     * @param b
+     * @param path
+     */
     public void WriteUserToFile(Basic b, String path){
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(path, true)); //append true

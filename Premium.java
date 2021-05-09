@@ -30,16 +30,26 @@ public class Premium extends Basic {
         this.cachesVisitadasP = cachesVisitadasP;
     }
 
-
-    public void criarCachePremium(Cache c) {
+    /**
+     * Permite um user basico visitar uma cache basica.
+     * @param c
+     * @param cbase
+     */
+    public void criarCachePremium(Cache c, CacheBase cbase) {
 
         if (this.caches.contains(c.getNome())) {
             System.out.println(" Esta cache ja existe: " + c);
             return;
         }
         this.caches.put(c.getNome(), c);
+        cbase.getDB_caches().put(c.getNome(),c);
     }
 
+    /**
+     * Permite um user premium visitar qualquer cache.
+     * @param c
+     * @param cbase
+     */
     public void visitCache(Cache c, CacheBase cbase) {
         if (cbase.getDB_caches().contains(c.getNome())) {
             LocalDateTime d = LocalDateTime.now();
@@ -54,6 +64,12 @@ public class Premium extends Basic {
         }
     }
 
+    /**
+     * Permite um utilizador premium inserir um travelbug numa cache.
+     * @param t
+     * @param c
+     * @param cbase
+     */
     public void insert_travelbug(Travel_bugs t, Cache c, CacheBase cbase) {
         if (cbase.DB_caches.contains(c.getNome())) {
             if (c.items.contains(t.getID())) {
@@ -77,6 +93,11 @@ public class Premium extends Basic {
         System.out.println("Cache nao encontrada!");
     }
 
+    /**
+     * Permite inserir qualquer tipo de cache.
+     * @param c
+     * @param cbase
+     */
     public void insertCache(Cache c, CacheBase cbase) {
 
         if (this.caches.contains(c.getNome())) {
@@ -88,6 +109,14 @@ public class Premium extends Basic {
         cbase.DB_caches.put(c.getNome(), c);
     }
 
+    /**
+     * Permite um user premium trocar items em qualquer cache.
+     * @param i
+     * @param nome
+     * @param i2
+     * @param cbase
+     * @param c2missao
+     */
     public void trocarItem(Item i, String nome, Item i2, CacheBase cbase, Cache c2missao) {
         Cache aux = searchCache(nome);
         // Cache aux = this.caches.get(nome);// procurar nas caches globais, nao nas do utilizador
@@ -119,6 +148,11 @@ public class Premium extends Basic {
         }
     }
 
+    /**
+     * Permite remover uma cache.
+     * @param nome
+     * @param cbase
+     */
     public void removerCache(String nome, CacheBase cbase) {
         Cache c = this.caches.get(nome);
         if (c != null) {
@@ -130,6 +164,14 @@ public class Premium extends Basic {
         System.out.println("Impossivel remover cache!");
     }
 
+    /**
+     * Permite editar uma cache.
+     * @param nome
+     * @param tipo
+     * @param coordenadas
+     * @param dificuldade
+     * @param cbase
+     */
     public void editarCache(String nome, String tipo, Point coordenadas, String dificuldade, CacheBase cbase) {
         Cache c = this.caches.get(nome);
         if (c != null ) {
@@ -143,6 +185,10 @@ public class Premium extends Basic {
         System.out.println("Impossivel editar uma cache que nao existe!");
     }
 
+    /**
+     * Permite encontrar caches premium com 1 ou + objetos.
+     * @param cbasePremium
+     */
     public void findCachesPremiumWithObjects(CacheBase cbasePremium) {
 
         for ( String c : cbasePremium.getDB_caches().keys()) {
@@ -154,6 +200,11 @@ public class Premium extends Basic {
         }
     }
 
+    /**
+     * Permite escrever para um ficheiro um user removido.
+     * @param b
+     * @param path
+     */
     public void WriteUserToFile(Premium b, String path){
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(path, true)); //append true

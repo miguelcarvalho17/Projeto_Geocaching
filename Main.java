@@ -32,16 +32,13 @@ public class Main {
         Item i3 = new Item(3, "bola");
         Item i4 = new Item(4, "limao");
         c1.inserir_item(i2, cbase);
+        cbase.removeCache("geocache1");
         c1.inserir_item(i3, cbase);
         c2.inserir_item(i4, cbase);
         b1.visitCache(c1, cbase);
         saveCachesTXT(cbase,"data/geocachesOUT.txt");
         //cbase.removeCache("geocache1");
 
-
-        //b1.inserirItemUser(i2);
-        //base.removeAUser(1);
-        //base.printUsers();
 
 
         //Travel_bugs i1 = new Travel_bugs(1, "moeda");
@@ -94,7 +91,11 @@ public class Main {
 
     }
 
-
+    /**
+     * Lê os users de um ficheiro txt e insere-os.
+     * @param path
+     * @param base
+     */
     public static void readUtilizadores(String path, UsersBase base) {
         In in = new In(path);
         while (!in.isEmpty()) {
@@ -116,6 +117,11 @@ public class Main {
         }
     }
 
+    /**
+     * Lê as caches de um ficheiro txt e insere-as.
+     * @param path
+     * @param cbase
+     */
     public static void readCaches(String path, CacheBase cbase) {
         In in = new In(path);
         while (!in.isEmpty()) {
@@ -150,6 +156,11 @@ public class Main {
         }
     }
 
+    /**
+     * Guarda os users do sistema num ficheiro txt.
+     * @param base
+     * @param utxt
+     */
     public static void saveUsersTXT(UsersBase base, String utxt){
         try{
             if(!base.getBasics().isEmpty()){
@@ -195,6 +206,11 @@ public class Main {
         }
     }
 
+    /**
+     * Guarda as caches do sistema num ficheiro txt.
+     * @param cbase
+     * @param ctxt
+     */
     public static void saveCachesTXT(CacheBase cbase, String ctxt){
         try {
             if (!cbase.getDB_caches().isEmpty()){
