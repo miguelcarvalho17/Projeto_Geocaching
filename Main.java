@@ -16,14 +16,15 @@ public class Main {
         readUtilizadores("data/utilizadores.txt",base);
         readCaches("data/geocaches.txt", cbase);
 
-        //Tarefa Stor
+        /*
+        //Tarefa Input
         //Manuel
         Basic manuel = base.getBasics().get(1);
         Item i1 = new Item(2, "bolo");
         manuel.inserirItemUser(i1);
         Cache c1 = cbase.DB_caches.get("geocache1");
         Cache c2 = cbase.DB_caches.get("geocache2");
-        Travel_bugs t = new Travel_bugs(19, "capa");
+        Travel_bugs t = new Travel_bugs(19, "travelbug2");
         c2.inserir_item(t, cbase);
         Cache c6 = cbase.DB_caches.get("geocache6");
         Cache c8 = cbase.DB_caches.get("geocache8");
@@ -51,26 +52,175 @@ public class Main {
         Item capa = cbase.DB_caches.get("geocache8").items.get(13);
         pedro.userRemoveItemCache(capa, cbase, "geocache8");
 
+        System.out.println("----------------------//-------------------------");
+
+        //Fernando
+        Admin fernando = base.getAdmins().get(3);
+        Item i3 = new Item(25, "livro");
+        fernando.inserirItemUser(i3);
+        Cache c12 = cbase.DB_caches.get("geocache12");
+        Cache c11 = cbase.DB_caches.get("geocache11");
+        Cache c10 = cbase.DB_caches.get("geocache10");
+        Cache c9 = cbase.DB_caches.get("geocache9");
+        Cache c5 = cbase.DB_caches.get("geocache5");
+        Cache c4 = cbase.DB_caches.get("geocache4");
+        Cache c3 = cbase.DB_caches.get("geocache3");
+        Cache c7 = cbase.DB_caches.get("geocache7");
+        Cache c15 = cbase.DB_caches.get("geocache15");
+        Travel_bugs t1 = new Travel_bugs(20, "travelbug1");
+        c1.inserir_item(t1, cbase);
+        fernando.visitCache(c12, cbase);
+        fernando.visitCache(c11, cbase);
+        fernando.visitCache(c10, cbase);
+        fernando.visitCache(c8, cbase);
+        fernando.visitCache(c9, cbase);
+        fernando.visitCache(c5, cbase);
+        fernando.visitCache(c6, cbase);
+        fernando.visitCache(c4, cbase);
+        fernando.visitCache(c3, cbase);
+        fernando.visitCache(c2, cbase);
+        fernando.visitCache(c1, cbase);
+        fernando.trocarItem(t1, "geocache1", i3, cbase, c15);
+        fernando.visitCache(c7, cbase);
+        fernando.visitCache(c15, cbase);
+        fernando.userInsertItemCache(t1, cbase, "geocache15");
+        fernando.visitCache(c17, cbase);
+        fernando.visitCache(c18, cbase);
+        fernando.visitCache(c13, cbase);
 
 
+        System.out.println("----------------------//-------------------------");
+
+
+        //Joana
+
+        Basic joana = base.getBasics().get(4);
+        Cache c14 = cbase.DB_caches.get("geocache4");
+        joana.visitCache(c14,cbase);
+        joana.visitCache(c15,cbase);
+        joana.visitCache(c18,cbase);
+        joana.visitCache(c17,cbase);
+        joana.visitCache(c13,cbase);
+
+        System.out.println("----------------------//-------------------------");
+
+        //MARIA
+
+        Premium maria = base.getPremiums().get(5);
+
+        Item i2 = new Item(3,"caderno");
+        maria.inserirItemUser(i2);
+        Travel_bugs travelbug3 = new Travel_bugs(20, "travelbug3");
+        c3.inserir_item(travelbug3, cbase);
+        maria.visitCache(c3, cbase);
+        maria.trocarItem(travelbug3,"geocache3",i3,cbase,c12);
+        maria.visitCache(c8,cbase);
+        maria.visitCache(c9,cbase);
+        maria.visitCache(c10,cbase);
+        maria.visitCache(c16,cbase);
+        maria.visitCache(c11,cbase);
+        maria.visitCache(c12,cbase);
+        maria.userInsertItemCache(travelbug3, cbase, "geocache12");
+
+        System.out.println("----------------------//-------------------------");
+
+        //Filomena
+
+        Admin filomena = base.getAdmins().get(6);
+
+        filomena.visitCache(c5,cbase);
+        filomena.visitCache(c6,cbase);
+        filomena.visitCache(c7,cbase);
+        filomena.visitCache(c3,cbase);
+        filomena.visitCache(c2,cbase);
+        filomena.visitCache(c1,cbase);
+        filomena.visitCache(c8,cbase);
+        filomena.visitCache(c13,cbase);
+
+        System.out.println("----------------------//-------------------------");
 
 
 
         //base.printUsers();
         //cbase.printDBcaches();
 
+        //Geocaches Visitadas pelos users
+        manuel.find_visitedCaches();
+        pedro.find_visitedCaches();
+        fernando.find_visitedCaches();
+        joana.find_visitedCaches();
+        maria.find_visitedCaches();
+        filomena.find_visitedCaches();
+
+        System.out.println("---------//-----------");
+        //Geocaches nao visitadas pelos users
+
+        manuel.FindNonVisitedCaches(cbase);
+        pedro.FindNonVisitedCaches(cbase);
+        fernando.FindNonVisitedCaches(cbase);
+        joana.FindNonVisitedCaches(cbase);
+        maria.FindNonVisitedCaches(cbase);
+        filomena.FindNonVisitedCaches(cbase);
+
+        // Users que visitaram a cache6
+        c6.findUsersVisitedCache(base);
+
+        System.out.println("---------//-----------");
+
+        //Caches premium com pelo menos 1 objeto
+        maria.findCachesPremiumWithObjects(cbase);
+
+        System.out.println("---------//-----------");
+
+        //Remover o user Pedro
+        base.removeAUser(2);
+
+        System.out.println("---------//-----------");
+
+        //Remover as geocaches 4, 8, 18
+        cbase.removeACache("geocache4");
+        cbase.removeACache("geocache8");
+        cbase.removeACache("geocache18");
+
+        System.out.println("---------//-----------");
+
+        //Geocaches Visitadas pelos users
+        manuel.find_visitedCaches();
+        pedro.find_visitedCaches();
+        fernando.find_visitedCaches();
+        joana.find_visitedCaches();
+        maria.find_visitedCaches();
+        filomena.find_visitedCaches();
+
+        System.out.println("---------//-----------");
+        //Geocaches nao visitadas pelos users
+
+        manuel.FindNonVisitedCaches(cbase);
+        pedro.FindNonVisitedCaches(cbase);
+        fernando.FindNonVisitedCaches(cbase);
+        joana.FindNonVisitedCaches(cbase);
+        maria.FindNonVisitedCaches(cbase);
+        filomena.FindNonVisitedCaches(cbase);
+
+        // Users que visitaram a cache6
+        c6.findUsersVisitedCache(base);
+
+        System.out.println("---------//-----------");
+
+        //Caches premium com pelo menos 1 objeto
+        maria.findCachesPremiumWithObjects(cbase);
+
+        */
         //requisito3(cbase, base);
 
         //requisito5(cbase, base);
 
         //Requisito 7
-        //saveUsersTXT(base,"data/usersOUT.txt");
-        //saveCachesTXT(cbase,"data/geocachesOUT.txt");
+        saveUsersTXT(base,"data/usersOUT.txt");
+        saveCachesTXT(cbase,"data/geocachesOUT.txt");
 
         //Requisito 8
         //requisito8(cbase, base);
-
-
 
     }
 
@@ -274,6 +424,7 @@ public class Main {
                 writer.write(base.getBasics().get(si).nome);
                 writer.write(", ");
                 writer.write("basic");
+                writer.newLine();
                 }
                 writer.newLine();
                 writer.close();
@@ -287,6 +438,7 @@ public class Main {
                     writer.write(base.getPremiums().get(si).nome);
                     writer.write(", ");
                     writer.write("premium");
+                    writer.newLine();
                 }
                 writer.newLine();
                 writer.close();
@@ -300,6 +452,7 @@ public class Main {
                     writer.write(base.getAdmins().get(si).nome);
                     writer.write(", ");
                     writer.write("admin");
+                    writer.newLine();
                 }
                 writer.newLine();
                 writer.close();
