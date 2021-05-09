@@ -10,10 +10,7 @@ import java.util.Random;
 
 public class Premium extends Basic {
 
-    public ArrayList<Cache> cachesEscondidasP;
-
     public ArrayList<Cache> cachesVisitadasP;
-
 
     public Premium(int ID, String nome, UsersBase base) {
         super(ID, nome);
@@ -26,23 +23,15 @@ public class Premium extends Basic {
 
     public Premium(int ID, String nome,UsersBase base, ArrayList<Cache> cachesEscondidasP, ArrayList<Cache> cachesVisitadasP) {
         super(ID, nome, base);
-        this.cachesEscondidasP = cachesEscondidasP;
         this.cachesVisitadasP = cachesVisitadasP;
     }
 
-    /**
-     * Permite um user basico visitar uma cache basica.
-     * @param c
-     * @param cbase
-     */
-    public void criarCachePremium(Cache c, CacheBase cbase) {
+    public ArrayList<Cache> getCachesVisitadasP() {
+        return cachesVisitadasP;
+    }
 
-        if (this.caches.contains(c.getNome())) {
-            System.out.println(" Esta cache ja existe: " + c);
-            return;
-        }
-        this.caches.put(c.getNome(), c);
-        cbase.getDB_caches().put(c.getNome(),c);
+    public void setCachesVisitadasP(ArrayList<Cache> cachesVisitadasP) {
+        this.cachesVisitadasP = cachesVisitadasP;
     }
 
     /**
@@ -227,7 +216,7 @@ public class Premium extends Basic {
 
     @Override
     public String toString() {
-        return "Premium{" +
+        return "User Premium{" +
                 "ID=" + ID +
                 ", nome='" + nome + '\'' +
                 '}';

@@ -84,7 +84,7 @@ public class Admin extends Premium {
 
   @Override
   public String toString() {
-    return "Admin{" +
+    return "User Admin{" +
             "ID=" + ID +
             ", nome='" + nome + '\'' +
             '}';

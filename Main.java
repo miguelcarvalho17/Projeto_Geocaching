@@ -15,31 +15,17 @@ public class Main {
     public static void main(String[] args) {
         UsersBase base = new UsersBase();
         CacheBase cbase = new CacheBase();
-        //readUtilizadores("data/utilizadores.txt",base);
-        //readCaches("data/geocaches.txt", cbase);
-        Premium b1 = new Premium(1, "Daniel", base);
-        Basic b2 = new Basic(2, "Miguel", base);
-        Admin a1 = new Admin(3,"Joao", base);
+
+        readUtilizadores("data/utilizadores.txt",base);
+        readCaches("data/geocaches.txt", cbase);
+
+        //requisito3(cbase, base);
+
+        //requisito5(cbase, base);
+
         //saveUsersTXT(base,"data/usersOUT.txt");
-        //Basic b2 = new Basic(10,"Miguel", base);
-        Point p1 = new Point(5, 2, "Norte");
-        Point p2 = new Point(7, -6, "Norte");
-        Cache c1 = new Cache("premium", p1, "facil", 0, "geocache1", cbase);
-        Cache c2 = new Cache("basic", p2, "medio", 0, "geocache3", cbase);
 
-
-        Item i2 = new Item(2, "caneta");
-        Item i3 = new Item(3, "bola");
-        Item i4 = new Item(4, "limao");
-        c1.inserir_item(i2, cbase);
-        cbase.removeCache("geocache1");
-        c1.inserir_item(i3, cbase);
-        c2.inserir_item(i4, cbase);
-        b1.visitCache(c1, cbase);
-        saveCachesTXT(cbase,"data/geocachesOUT.txt");
-        //cbase.removeCache("geocache1");
-
-
+        //saveCachesTXT(cbase,"data/geocachesOUT.txt");
 
         //Travel_bugs i1 = new Travel_bugs(1, "moeda");
         //Item i2 = new Item(2, "caneta");
@@ -87,8 +73,74 @@ public class Main {
        //b1.trocarItem(i1, "geocache1", i2, cbase);
 
         //c1.print_items();
-       cbase.printDBcaches();
+        //cbase.printDBcaches();
+    }
 
+    public static void requisito3(CacheBase cbase, UsersBase base) {
+
+    //Pesquisa de users
+    Basic b1 = base.getBasics().get(4);
+    Admin a1 = base.getAdmins().get(3);
+
+    //Inserçao de um user
+        Admin b3 = new Admin(25, "Joao", base);
+
+        //Apagar um user
+        base.getBasics().delete(b1.getID());
+
+        //Editar o nome de um user basic
+    base.getBasics().get(b1.getID()).setNome("Paula");
+
+    //(Editar user)-Tornar um user basic num user premium
+    b1 = (Premium)a1.editar_utilizador(b1,4, base, "premium", "Joana");
+
+    //Inserçao de um item num utilizador
+    Item i3 = new Item(19, "bola");
+    b1.inserirItemUser(i3);
+
+    //Remoçao de um item num utilizador
+        b1.items.remove(i3);
+
+        //Inserçao de uma cache
+        Point p2 = new Point(-6.345875, 5.23455, "Madeira");
+        Cache c2 = new Cache("basic",p2, "dificil", 0, "geocache100", cbase);
+
+        //Remoçao de uma cache
+        cbase.DB_caches.delete(c2.getNome());
+
+        //Editar uma cache, torna-la premium, um utilizador basic tentar visita-la
+        Cache c = cbase.getDB_caches().get("geocache1");
+        cbase.getDB_caches().get("geocache1").setTipo("premium");
+        b1.visitCache(c, cbase);
+
+        //Inserçao de um Item numa cache
+        Item i1 = new Item(20, "luvas");
+        cbase.getDB_caches().get("geocache1").inserir_item(i1, cbase);
+
+        //Remover um item numa cache
+        c.items.delete(i1.getID());
+
+        //Editar item numa cache
+        c.editar_item(i1.getID(), "bolo");
+
+        //Inserçao de um travel bug
+        Travel_bugs t1 = new Travel_bugs(1, "moeda");
+
+    }
+
+    public static void requisito5(CacheBase cbase, UsersBase base){
+
+        //Remoçao de uma cache, guarda a informaçao items, logs, coordenadas no ficheiro removedcache.txt
+        cbase.removeACache("geocache1");
+        //cbase.printDBcaches();
+
+        Basic b1 = new Basic(7,"Paulo", base);
+        Item i1 = new Item(1, "livro");
+        b1.inserirItemUser(i1);
+
+        //Remoçao de um user, guardando a informaçao dele, items, nome, ID
+        base.removeAUser(7);
+        //base.printUsers();
     }
 
     /**

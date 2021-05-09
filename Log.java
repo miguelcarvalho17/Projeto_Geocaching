@@ -1,6 +1,5 @@
 package Projeto_Geocaching;
 
-import javax.xml.crypto.Data;
 import java.time.LocalDateTime;
 
 public class Log {

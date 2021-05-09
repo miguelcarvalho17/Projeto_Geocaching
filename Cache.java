@@ -40,6 +40,7 @@ public class Cache {
     this.dificuldade = dificuldade;
     this.nItems = 0;
     this.nome = nome;
+    this.logs = new ArrayList<>();
   }
 
   public Cache(String tipo, Point coordenadas, String dificuldade, int nitens, String nome) {
@@ -48,6 +49,7 @@ public class Cache {
     this.dificuldade = dificuldade;
     this.nItems = nitens;
     this.nome = nome;
+    this.logs = new ArrayList<>();
   }
 
   public Cache(String tipo, Point coordenadas, String dificuldade, int nitens, String nome, CacheBase cbase, ArrayList<Log> logs) {
@@ -69,6 +71,7 @@ public class Cache {
     this.logs = new ArrayList<>();
     cbase.getDB_caches().put(this.getNome(),this);
   }
+
 
   public String getNome() {
     return nome;
@@ -140,6 +143,17 @@ public class Cache {
       for (Integer i : c.items.keys()){
         writer.write(", ");
         writer.write(c.items.get(i).getObjeto());
+      }
+      writer.newLine();
+      writer.write("Logs: ");
+      writer.newLine();
+      for (int i = 0; i < c.getLogs().size();i++){
+        writer.write(String.valueOf(c.getLogs().get(i).ID));
+        writer.write(", ");
+        writer.write(c.getLogs().get(i).acontecimento);
+        writer.write(", ");
+        writer.write(String.valueOf(c.getLogs().get(i).data));
+        writer.newLine();
       }
       writer.newLine();
       writer.close();

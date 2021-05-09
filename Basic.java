@@ -18,9 +18,47 @@ public class Basic {
 
     public ArrayList<Item> items = new ArrayList<>();
 
-    //public ArrayList<Cache> cachesEscondidasB = new ArrayList<>();
-
     SeparateChainingHashST<String, Cache> caches = new SeparateChainingHashST<>();
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public ArrayList<Cache> getCachesVisitadasB() {
+        return cachesVisitadasB;
+    }
+
+    public void setCachesVisitadasB(ArrayList<Cache> cachesVisitadasB) {
+        this.cachesVisitadasB = cachesVisitadasB;
+    }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
+    }
+
+    public SeparateChainingHashST<String, Cache> getCaches() {
+        return caches;
+    }
+
+    public void setCaches(SeparateChainingHashST<String, Cache> caches) {
+        this.caches = caches;
+    }
 
     public Basic(int ID, String nome, UsersBase base) {
         this.ID = ID;
@@ -304,7 +342,7 @@ public class Basic {
 
     @Override
     public String toString() {
-        return "User Basic->" + "ID=" + ID + "; nome=" + nome;
+        return "User Basic{" + "ID=" + ID + "; nome=" + nome + "}";
     }
 
 
