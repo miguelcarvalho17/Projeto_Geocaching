@@ -27,7 +27,9 @@ public class Main {
         Cache c1 = new Cache("premium", p1, "facil", 0, "geocache1", cbase);
         Cache c2 = new Cache("basic", p2, "medio", 0, "geocache3", cbase);
 
+
         Item i2 = new Item(2, "caneta");
+        c1.inserir_item(i2, cbase);
         cbase.removeCache("geocache1");
         //b1.inserirItemUser(i2);
         //base.removeAUser(1);

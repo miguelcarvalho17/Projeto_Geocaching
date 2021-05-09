@@ -132,7 +132,10 @@ public class Cache {
       writer.write(c.getDificuldade());
       writer.write(", ");
       writer.write(String.valueOf(c.getnItems()));
-      writer.write(", ");
+      for (Integer i : c.items.keys()){
+        writer.write(", ");
+        writer.write(c.items.get(i).getObjeto());
+      }
       writer.newLine();
       writer.close();
     } catch (Exception e) {
