@@ -34,9 +34,10 @@ public class Main {
         c1.inserir_item(i2, cbase);
         c1.inserir_item(i3, cbase);
         c2.inserir_item(i4, cbase);
+        b1.visitCache(c1, cbase);
         saveCachesTXT(cbase,"data/geocachesOUT.txt");
         //cbase.removeCache("geocache1");
-        b1.visitCache(c1, cbase);
+
 
         //b1.inserirItemUser(i2);
         //base.removeAUser(1);
@@ -216,6 +217,17 @@ public class Main {
                     for (Integer i : cbase.DB_caches.get(si).items.keys()){
                         writer.write(", ");
                         writer.write(cbase.DB_caches.get(si).items.get(i).getObjeto());
+                    }
+                    writer.newLine();
+                    writer.write("Logs: ");
+                    writer.newLine();
+                    for (int i = 0; i < cbase.DB_caches.get(si).getLogs().size();i++){
+                        writer.write(String.valueOf(cbase.DB_caches.get(si).getLogs().get(i).ID));
+                        writer.write(", ");
+                        writer.write(cbase.DB_caches.get(si).getLogs().get(i).acontecimento);
+                        writer.write(", ");
+                        writer.write(String.valueOf(cbase.DB_caches.get(si).getLogs().get(i).data));
+                        writer.newLine();
                     }
                     writer.newLine();
                 }
