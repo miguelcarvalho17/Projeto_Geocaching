@@ -148,11 +148,11 @@ public class Cache {
       writer.write("Logs: ");
       writer.newLine();
       for (int i = 0; i < c.getLogs().size();i++){
-        writer.write(String.valueOf(c.getLogs().get(i).ID));
+        writer.write(String.valueOf(Log.ID));
         writer.write(", ");
-        writer.write(c.getLogs().get(i).acontecimento);
+        writer.write(c.getLogs().get(i).getAcontecimento());
         writer.write(", ");
-        writer.write(String.valueOf(c.getLogs().get(i).data));
+        writer.write(String.valueOf(c.getLogs().get(i).getData()));
         writer.newLine();
       }
       writer.newLine();
@@ -176,10 +176,8 @@ public class Cache {
 
     this.items.put(i.getID(), i);
     LocalDateTime d = LocalDateTime.now();
-    Random rand = new Random();
-    int rand_int1 = rand.nextInt(1000);
     String acontecimento = "Item inserido na cache: "+ i.getObjeto();
-    Log l = new Log(acontecimento,d, rand_int1);
+    Log l = new Log(acontecimento,d);
     this.logs.add(l);
     cbase.getDB_caches().put(this.getNome(),this);
     this.nItems++;
@@ -198,10 +196,8 @@ public class Cache {
       System.out.println("Item removido da " + this.getNome() + ": " +i);
       this.items.delete(id);
       LocalDateTime d = LocalDateTime.now();
-      Random rand = new Random();
-      int rand_int1 = rand.nextInt(1000);
       String acontecimento = "Item removido da cache: "+ i.getObjeto();
-      Log l = new Log(acontecimento,d, rand_int1);
+      Log l = new Log(acontecimento,d);
       this.logs.add(l);
       cbase.DB_caches.get(this.getNome()).remover_item(id, cbase);
       this.nItems--;
@@ -223,9 +219,7 @@ public class Cache {
     Item i = this.items.get(id);
     i.setObjeto(objeto);
     LocalDateTime d = LocalDateTime.now();
-    Random rand = new Random();
-    int rand_int1 = rand.nextInt(1000);
-    Log l = new Log("Item editado da cache!",d, rand_int1);
+    Log l = new Log("Item editado da cache!",d);
     this.logs.add(l);
     System.out.println("Item editado com sucesso"  + this.getNome());
   }

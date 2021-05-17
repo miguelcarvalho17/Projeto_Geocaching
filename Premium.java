@@ -42,10 +42,8 @@ public class Premium extends Basic {
     public void visitCache(Cache c, CacheBase cbase) {
         if (cbase.getDB_caches().contains(c.getNome())) {
             LocalDateTime d = LocalDateTime.now();
-            Random rand = new Random();
-            int rand_int1 = rand.nextInt(1000);
             String acontecimento = "Cache visitada por " + this.nome;
-            Log l = new Log(acontecimento, d, rand_int1);
+            Log l = new Log(acontecimento, d);
             c.getLogs().add(l);
             this.cachesVisitadasB.add(c);
         }else{
@@ -71,10 +69,8 @@ public class Premium extends Basic {
             System.out.println("TravelBug inserido com sucesso");
             c.setnItems(c.getnItems() + 1);
             LocalDateTime d = LocalDateTime.now();
-            Random rand = new Random();
-            int rand_int1 = rand.nextInt(1000);
             String acontecimento = "Travel Bug inserido na cache: "+ t.getObjeto();
-            Log l = new Log(acontecimento,d, rand_int1);
+            Log l = new Log(acontecimento,d);
             c.getLogs().add(l);
             cbase.getDB_caches().put(c.getNome(),c);
             return;

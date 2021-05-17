@@ -4,16 +4,16 @@ import java.time.LocalDateTime;
 
 public class Log {
 
-  public String acontecimento;
+  private String acontecimento;
 
-  public LocalDateTime data;
+  private LocalDateTime data;
 
-  public int ID;
+  public static int ID = 1;
 
-  public Log(String acontecimento, LocalDateTime data, int ID) {
+  public Log(String acontecimento, LocalDateTime data) {
     this.acontecimento = acontecimento;
     this.data = data;
-    this.ID = ID;
+    ID++;
   }
 
   public Log() {
@@ -35,12 +35,12 @@ public class Log {
     this.data = data;
   }
 
-  public int getID() {
+  public static int getID() {
     return ID;
   }
 
-  public void setID(int ID) {
-    this.ID = ID;
+  public static void setID(int ID) {
+    Log.ID = ID;
   }
 
   @Override

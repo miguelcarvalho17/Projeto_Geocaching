@@ -16,7 +16,7 @@ public class Main {
         readUtilizadores("data/utilizadores.txt",base);
         readCaches("data/geocaches.txt", cbase);
 
-        /*
+
         //Tarefa Input
         //Manuel
         Basic manuel = base.getBasics().get(1);
@@ -210,7 +210,7 @@ public class Main {
         //Caches premium com pelo menos 1 objeto
         maria.findCachesPremiumWithObjects(cbase);
 
-        */
+
         //requisito3(cbase, base);
 
         //requisito5(cbase, base);
@@ -494,11 +494,11 @@ public class Main {
                     writer.write("Logs: ");
                     writer.newLine();
                     for (int i = 0; i < cbase.DB_caches.get(si).getLogs().size();i++){
-                        writer.write(String.valueOf(cbase.DB_caches.get(si).getLogs().get(i).ID));
+                        writer.write(String.valueOf(Log.ID));
                         writer.write(", ");
-                        writer.write(cbase.DB_caches.get(si).getLogs().get(i).acontecimento);
+                        writer.write(cbase.DB_caches.get(si).getLogs().get(i).getAcontecimento());
                         writer.write(", ");
-                        writer.write(String.valueOf(cbase.DB_caches.get(si).getLogs().get(i).data));
+                        writer.write(String.valueOf(cbase.DB_caches.get(si).getLogs().get(i).getData()));
                         writer.newLine();
                     }
                     writer.newLine();
