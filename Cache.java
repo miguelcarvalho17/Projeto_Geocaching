@@ -148,7 +148,7 @@ public class Cache {
       writer.write("Logs: ");
       writer.newLine();
       for (int i = 0; i < c.getLogs().size();i++){
-        writer.write(String.valueOf(Log.ID));
+        writer.write(String.valueOf(c.getLogs().get(i).getID()));
         writer.write(", ");
         writer.write(c.getLogs().get(i).getAcontecimento());
         writer.write(", ");

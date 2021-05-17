@@ -494,7 +494,7 @@ public class Main {
                     writer.write("Logs: ");
                     writer.newLine();
                     for (int i = 0; i < cbase.DB_caches.get(si).getLogs().size();i++){
-                        writer.write(String.valueOf(Log.ID));
+                        writer.write(String.valueOf(cbase.DB_caches.get(si).getLogs().get(i).getID()));
                         writer.write(", ");
                         writer.write(cbase.DB_caches.get(si).getLogs().get(i).getAcontecimento());
                         writer.write(", ");

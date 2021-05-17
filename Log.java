@@ -8,12 +8,15 @@ public class Log {
 
   private LocalDateTime data;
 
-  public static int ID = 1;
+  private int ID;
+
+  private static int counter = 1;
 
   public Log(String acontecimento, LocalDateTime data) {
     this.acontecimento = acontecimento;
     this.data = data;
-    ID++;
+    counter++;
+    this. ID = counter;
   }
 
   public Log() {
@@ -35,12 +38,12 @@ public class Log {
     this.data = data;
   }
 
-  public static int getID() {
+  public int getID() {
     return ID;
   }
 
-  public static void setID(int ID) {
-    Log.ID = ID;
+  public void setID(int ID) {
+    this.ID = ID;
   }
 
   @Override
