@@ -1,5 +1,6 @@
 package Projeto_Geocaching;
 
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.SeparateChainingHashST;
 
 import java.util.ArrayList;
@@ -11,6 +12,40 @@ import java.util.ArrayList;
    SeparateChainingHashST<String, Cache> DB_caches = new SeparateChainingHashST<>();
 
     public CacheBase() {
+    }
+
+    public CacheBase(String path){
+        CacheBase cbase = new CacheBase();
+        In in = new In(path);
+        while (!in.isEmpty()) {
+            String line = in.readLine();
+            String[] fields = line.split(", ");
+            String nome = fields[0];
+            String tipo = fields[1];
+            String latitude = fields[2];
+            String longitude = fields[3];
+            String regiao = fields[4];
+            String dificuldade = fields[5];
+            String nitems = fields[6];
+
+            int items = Integer.parseInt(nitems);
+            String[] ids = new String[items];
+            String[] objetos = new String[items];
+            Item[] items_cache = new Item[items];
+
+            for (int i = 0, k = 0; i < items*2 && k < items; i+=2, k++){
+                ids[k] = fields[7+i];
+                objetos[k] = fields[7+i+1];
+                items_cache[k] =  new Item(Integer.parseInt(ids[k]), objetos[k]);
+            }
+
+            Point p = new Point(Double.parseDouble(latitude), Double.parseDouble(longitude), regiao);
+            Cache c = new Cache(tipo, p, dificuldade, nome);
+            for (int i = 0; i < items; i++){
+                c.inserir_item(items_cache[i], cbase);
+            }
+            cbase.getDB_caches().put(c.getNome(), c);
+        }
     }
 
         public SeparateChainingHashST<String, Cache> getDB_caches() {
@@ -44,6 +79,15 @@ import java.util.ArrayList;
                 }
             }
 
+        }
+
+        public Cache findCache(String nome) {
+            for (String i : this.getDB_caches().keys()) {
+                if (i.equals(nome)) {
+                    return this.getDB_caches().get(i);
+                }
+            }
+            return null;
         }
 
         @Override

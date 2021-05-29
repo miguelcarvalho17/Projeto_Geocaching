@@ -52,6 +52,10 @@ public class Cache {
     this.logs = new ArrayList<>();
   }
 
+  public Cache(String nome){
+    this.nome = nome;
+  }
+
   public Cache(String tipo, Point coordenadas, String dificuldade, int nitens, String nome, CacheBase cbase, ArrayList<Log> logs) {
     this.tipo = tipo;
     this.coordenadas = coordenadas;
@@ -230,7 +234,9 @@ public class Cache {
   public void print_items() {
       if (this.items.isEmpty()) {
         System.out.println("Esta cache nao tem items");
+        return;
       }
+
       for (Integer si : this.items.keys()) {
         System.out.println("Items existentes na " + this.getNome() +":"+ this.items.get(si));
       }
@@ -277,8 +283,8 @@ public class Cache {
   @Override
   public String toString() {
 
-    this.print_items();
-    this.print_logs();
+   // this.print_items();
+   //this.print_logs();
     return "Cache{" +
             "nome='" + nome + '\'' +
             ", tipo='" + tipo + '\'' +
