@@ -83,7 +83,7 @@ import java.util.ArrayList;
 
         public Cache findCache(String nome) {
             for (String i : this.getDB_caches().keys()) {
-                if (i.equals(nome)) {
+                if (i.compareTo(nome) == 0) {
                     return this.getDB_caches().get(i);
                 }
             }
